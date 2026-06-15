@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-primary;
+  }
+
+  /* Visible keyboard focus across all interactive elements. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #c9a96e;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* 3D button: soft depth that presses in on click. */
+  .btn-3d {
+    box-shadow:
+      0 6px 16px -6px rgba(28, 43, 58, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    will-change: transform;
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 12px 24px -8px rgba(28, 43, 58, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-3d:active {
+    transform: translateY(0) scale(0.99);
+    box-shadow:
+      0 3px 8px -4px rgba(28, 43, 58, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Shine: a gloss highlight that sweeps across on hover. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -160%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.75s ease;
+    pointer-events: none;
+  }
+
+  .shine:hover::before {
+    left: 160%;
+  }
+}
+
+/* Respect users who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .shine::before,
+  .btn-3d {
+    transition: none;
+  }
+
+  .btn-3d:hover {
+    transform: none;
+  }
+}
