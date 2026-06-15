@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
-import { site } from "@/lib/site";
+import { site, basePath } from "@/lib/site";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ export default function Hero() {
         className="absolute inset-x-0 top-[-12%] -z-10 h-[124%]"
       >
         <Image
-          src="/images/hero-construction-site.jpg"
+          src={`${basePath}/images/hero-construction-site.jpg`}
           alt="A custom two-story home under construction in the Pittsburgh area"
           fill
           priority

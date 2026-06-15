@@ -1,6 +1,7 @@
 // Areas We Serve: Pittsburgh suburb list for local SEO with a map embed.
 import type { Metadata } from "next";
 import Link from "next/link";
+import { basePath } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
@@ -116,7 +117,7 @@ export default function AreasPage() {
         eyebrow="Service Area"
         title="Serving Greater Pittsburgh"
         intro="Keystone Builders works across four counties in southwestern Pennsylvania. If you are in or near the communities listed below, we can come to you."
-        image="/images/home-exterior-modern.jpg"
+        image={`${basePath}/images/home-exterior-modern.jpg`}
         imageAlt="Finished custom home in the Greater Pittsburgh area"
       />
 

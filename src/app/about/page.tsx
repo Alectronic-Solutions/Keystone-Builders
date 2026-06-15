@@ -9,7 +9,7 @@ import ProcessSection from "@/components/home/ProcessSection";
 import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 import Reveal from "@/components/Reveal";
-import { site } from "@/lib/site";
+import { site, basePath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -39,7 +39,7 @@ export default function AboutPage() {
         eyebrow="About Keystone"
         title="A Pittsburgh builder you can count on"
         intro="Family owned since 2009, we have grown from kitchen remodels into one of the region's trusted names in custom homes and commercial construction."
-        image="/images/crew-working.jpg"
+        image={`${basePath}/images/crew-working.jpg`}
         imageAlt="Keystone Builders crew at work on a Pittsburgh construction site"
       />
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
             <Image
-              src="/images/foundation-crew.jpg"
+              src={`${basePath}/images/foundation-crew.jpg`}
               alt="Keystone Builders crew working on a residential foundation"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

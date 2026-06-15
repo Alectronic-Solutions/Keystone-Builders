@@ -1,6 +1,7 @@
 // Contact page: estimate request form, contact details, and a Pittsburgh service area map.
 import type { Metadata } from "next";
 import Link from "next/link";
+import { basePath } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import EstimateForm from "@/components/EstimateForm";
 import Reveal from "@/components/Reveal";
@@ -53,7 +54,7 @@ export default function ContactPage() {
         eyebrow="Get Started"
         title="Request your free estimate"
         intro="Tell us about your project and we will follow up to schedule a site visit. Most estimates go out within a few business days."
-        image="/images/foundation-crew.jpg"
+        image={`${basePath}/images/foundation-crew.jpg`}
         imageAlt="Keystone Builders crew setting foundations on a Pittsburgh job site"
       />
 

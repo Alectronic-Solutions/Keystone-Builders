@@ -1,3 +1,5 @@
+import { basePath } from "@/lib/site";
+
 // Project case studies. Shared by the homepage, /projects, and /projects/[slug].
 
 export type Project = {
@@ -30,12 +32,12 @@ export const projects: Project[] = [
     year: "2024",
     summary:
       "A ground-up custom residence blending glass, stone, and warm wood on a hillside lot.",
-    image: "/images/home-exterior-glass.jpg",
+    image: `${basePath}/images/home-exterior-glass.jpg`,
     imageAlt: "Modern custom home exterior with glass balconies and wood accents",
     gallery: [
-      { src: "/images/home-exterior-modern.jpg", alt: "Rear elevation opening to the yard" },
-      { src: "/images/kitchen-white-island.jpg", alt: "Open chef kitchen with island" },
-      { src: "/images/bath-marble-mirror.jpg", alt: "Primary bath with marble and large mirror" },
+      { src: `${basePath}/images/home-exterior-modern.jpg`, alt: "Rear elevation opening to the yard" },
+      { src: `${basePath}/images/kitchen-white-island.jpg`, alt: "Open chef kitchen with island" },
+      { src: `${basePath}/images/bath-marble-mirror.jpg`, alt: "Primary bath with marble and large mirror" },
     ],
     challenge:
       "The lot sloped steeply toward the rear, and the owners wanted floor-to-ceiling glass without giving up energy performance.",
@@ -55,12 +57,12 @@ export const projects: Project[] = [
     year: "2024",
     summary:
       "A closed-off 1920s kitchen reborn as one open, light-filled gathering space.",
-    image: "/images/kitchen-blue-granite.jpg",
+    image: `${basePath}/images/kitchen-blue-granite.jpg`,
     imageAlt: "Remodeled kitchen with blue cabinetry and a granite island",
     gallery: [
-      { src: "/images/kitchen-beige-marble.jpg", alt: "Marble counters and custom cabinetry" },
-      { src: "/images/kitchen-light-dining.jpg", alt: "Light dining area off the kitchen" },
-      { src: "/images/kitchen-white-wood.jpg", alt: "White cabinetry with warm wood details" },
+      { src: `${basePath}/images/kitchen-beige-marble.jpg`, alt: "Marble counters and custom cabinetry" },
+      { src: `${basePath}/images/kitchen-light-dining.jpg`, alt: "Light dining area off the kitchen" },
+      { src: `${basePath}/images/kitchen-white-wood.jpg`, alt: "White cabinetry with warm wood details" },
     ],
     challenge:
       "A load-bearing wall separated the kitchen from the living area, and the owners wanted one continuous space.",
@@ -79,12 +81,12 @@ export const projects: Project[] = [
     value: "$2.4M",
     year: "2023",
     summary: "A raw warehouse floor turned into a modern company headquarters.",
-    image: "/images/commercial-office-green.jpg",
+    image: `${basePath}/images/commercial-office-green.jpg`,
     imageAlt: "Modern office building exterior with a glass facade",
     gallery: [
-      { src: "/images/commercial-office-glass.jpg", alt: "Glass-walled conference rooms" },
-      { src: "/images/commercial-office-reflection.jpg", alt: "Open work areas with daylight" },
-      { src: "/images/commercial-office-twilight.jpg", alt: "Building exterior at dusk" },
+      { src: `${basePath}/images/commercial-office-glass.jpg`, alt: "Glass-walled conference rooms" },
+      { src: `${basePath}/images/commercial-office-reflection.jpg`, alt: "Open work areas with daylight" },
+      { src: `${basePath}/images/commercial-office-twilight.jpg`, alt: "Building exterior at dusk" },
     ],
     challenge:
       "The tenant needed to move in before their old lease ended, leaving a tight five month window.",
@@ -104,12 +106,12 @@ export const projects: Project[] = [
     year: "2023",
     summary:
       "A second-story primary suite that matches the home like it was always there.",
-    image: "/images/home-exterior-terrace.jpg",
+    image: `${basePath}/images/home-exterior-terrace.jpg`,
     imageAlt: "Two-story home exterior with a new upper-level addition",
     gallery: [
-      { src: "/images/framing-two-story.jpg", alt: "Framing the new second story" },
-      { src: "/images/bath-dual-sink.jpg", alt: "Spa bath with dual vanity" },
-      { src: "/images/bath-timber.jpg", alt: "Soaking tub with warm timber accents" },
+      { src: `${basePath}/images/framing-two-story.jpg`, alt: "Framing the new second story" },
+      { src: `${basePath}/images/bath-dual-sink.jpg`, alt: "Spa bath with dual vanity" },
+      { src: `${basePath}/images/bath-timber.jpg`, alt: "Soaking tub with warm timber accents" },
     ],
     challenge:
       "The addition had to tie into a steep existing roofline and match brick that is no longer manufactured.",
@@ -128,12 +130,12 @@ export const projects: Project[] = [
     value: "$95K",
     year: "2025",
     summary: "A dated primary bath reimagined as a marble spa retreat.",
-    image: "/images/bath-luxury-marble.jpg",
+    image: `${basePath}/images/bath-luxury-marble.jpg`,
     imageAlt: "Luxury bathroom with marble surfaces and a dual vanity",
     gallery: [
-      { src: "/images/bath-marble-mirror.jpg", alt: "Marble walls and a large mirror" },
-      { src: "/images/bath-white-tub.jpg", alt: "Freestanding tub by a glass shower" },
-      { src: "/images/bath-glass-shower.jpg", alt: "Walk-in glass shower with tile detail" },
+      { src: `${basePath}/images/bath-marble-mirror.jpg`, alt: "Marble walls and a large mirror" },
+      { src: `${basePath}/images/bath-white-tub.jpg`, alt: "Freestanding tub by a glass shower" },
+      { src: `${basePath}/images/bath-glass-shower.jpg`, alt: "Walk-in glass shower with tile detail" },
     ],
     challenge:
       "The owners wanted a heated floor and a curbless shower in a footprint with low ceilings and old cast iron plumbing.",
@@ -152,12 +154,12 @@ export const projects: Project[] = [
     value: "$1.1M",
     year: "2025",
     summary: "A foundation-to-finish family home on a wooded lot.",
-    image: "/images/home-exterior-minimal.jpg",
+    image: `${basePath}/images/home-exterior-minimal.jpg`,
     imageAlt: "Clean modern home exterior on a landscaped lot",
     gallery: [
-      { src: "/images/foundation-crew.jpg", alt: "Crew setting foundations and footings" },
-      { src: "/images/framing-wood-house.jpg", alt: "Completed framing of the two-story home" },
-      { src: "/images/home-brick-finished.jpg", alt: "Finished brick exterior at completion" },
+      { src: `${basePath}/images/foundation-crew.jpg`, alt: "Crew setting foundations and footings" },
+      { src: `${basePath}/images/framing-wood-house.jpg`, alt: "Completed framing of the two-story home" },
+      { src: `${basePath}/images/home-brick-finished.jpg`, alt: "Finished brick exterior at completion" },
     ],
     challenge:
       "The wooded lot had poor drainage and a long approach, so the build had to protect mature trees and manage water from day one.",

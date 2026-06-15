@@ -1,6 +1,7 @@
 // Services page: detailed breakdown of each service, deep-linkable by slug.
 import type { Metadata } from "next";
 import Image from "next/image";
+import { basePath } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
@@ -20,7 +21,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title="One team for the whole build"
         intro="From a single bathroom to a ground-up commercial space, we handle design, permitting, and construction under one roof."
-        image="/images/framing-two-story.jpg"
+        image={`${basePath}/images/framing-two-story.jpg`}
         imageAlt="Keystone Builders crew framing a two-story custom home"
       />
 

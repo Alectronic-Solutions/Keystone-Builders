@@ -1,5 +1,6 @@
 // Projects page: the full portfolio grid of case studies.
 import type { Metadata } from "next";
+import { basePath } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
@@ -19,7 +20,7 @@ export default function ProjectsPage() {
         eyebrow="Our Work"
         title="Projects across Greater Pittsburgh"
         intro="A selection of recent homes, remodels, and commercial builds. Each one delivered on the scope and schedule we committed to."
-        image="/images/home-exterior-glass.jpg"
+        image={`${basePath}/images/home-exterior-glass.jpg`}
         imageAlt="Modern custom home completed by Keystone Builders in Pittsburgh"
       />
 

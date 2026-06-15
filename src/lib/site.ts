@@ -1,3 +1,5 @@
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/Keystone-Builders";
+
 // Single source of truth for Keystone Builders business facts.
 // Navbar, Footer, and the LocalBusiness schema all read from here so a
 // detail (phone, license, email) lives in exactly one place.

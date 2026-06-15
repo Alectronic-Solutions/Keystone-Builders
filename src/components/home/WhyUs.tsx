@@ -1,5 +1,6 @@
 // WhyUs: differentiators with a trust badge strip and crew photo.
 import Image from "next/image";
+import { basePath } from "@/lib/site";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
@@ -38,7 +39,7 @@ export default function WhyUs() {
         <Reveal className="relative order-last lg:order-first">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
             <Image
-              src="/images/crew-engineers.jpg"
+              src={`${basePath}/images/crew-engineers.jpg`}
               alt="Two Keystone Builders project leads reviewing plans on site"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

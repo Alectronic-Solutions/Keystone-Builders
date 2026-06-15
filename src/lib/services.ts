@@ -1,3 +1,5 @@
+import { basePath } from "@/lib/site";
+
 // Service offerings. Shared by the homepage grid and the /services page.
 
 export type Service = {
@@ -17,7 +19,7 @@ export const services: Service[] = [
     short: "Custom homes built to your vision, from foundation to final walkthrough.",
     description:
       "We build custom homes from the ground up, handling site work, foundations, framing, and finishes under one roof. You get one accountable team from the first shovel to the day you get your keys.",
-    image: "/images/home-exterior-modern.jpg",
+    image: `${basePath}/images/home-exterior-modern.jpg`,
     imageAlt: "Finished modern custom home with large windows under a clear sky",
     features: [
       "Custom design and build",
@@ -32,7 +34,7 @@ export const services: Service[] = [
     short: "Kitchens, baths, and whole-home remodels that change how you live.",
     description:
       "From a single kitchen to a full gut renovation, we modernize older Pittsburgh homes while respecting what makes them special. We protect your home, keep the site clean, and finish what we start.",
-    image: "/images/kitchen-white-island.jpg",
+    image: `${basePath}/images/kitchen-white-island.jpg`,
     imageAlt: "Renovated modern kitchen with a large island and marble backsplash",
     features: [
       "Kitchen remodels",
@@ -47,7 +49,7 @@ export const services: Service[] = [
     short: "More space, seamlessly matched to your existing home.",
     description:
       "Room additions, second stories, and suites that look like they were always part of the house. We handle the structural engineering and tie new work into old so the seams disappear.",
-    image: "/images/framing-two-story.jpg",
+    image: `${basePath}/images/framing-two-story.jpg`,
     imageAlt: "Wood framing of a two-story home addition under a blue sky",
     features: [
       "Room and second-story additions",
@@ -62,7 +64,7 @@ export const services: Service[] = [
     short: "Build-outs and ground-up projects delivered on schedule.",
     description:
       "Offices, retail, and restaurants built to open on time. We move fast through permits, run trades in parallel, and phase the work so you can occupy finished space as soon as possible.",
-    image: "/images/commercial-office-green.jpg",
+    image: `${basePath}/images/commercial-office-green.jpg`,
     imageAlt: "Modern commercial office building with a glass facade",
     features: [
       "Office and retail build-outs",
