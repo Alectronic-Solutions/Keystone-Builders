@@ -6,7 +6,7 @@ import TrustStrip from "@/components/TrustStrip";
 import Footer from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
 import ScrollProgress from "@/components/ScrollProgress";
-import { site } from "@/lib/site";
+import { site, basePath } from "@/lib/site";
 
 // Display face for headings; body face for all UI text (per CLAUDE.md).
 const playfair = Playfair_Display({
@@ -30,13 +30,6 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-  },
   openGraph: {
     type: "website",
     title: `${site.name} | General Contractor in ${site.city}`,
@@ -95,6 +88,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        <link rel="icon" href={`${basePath}/favicon.svg`} type="image/svg+xml" />
+        <link rel="shortcut icon" href={`${basePath}/favicon.svg`} />
+        <link rel="apple-touch-icon" href={`${basePath}/favicon.svg`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
