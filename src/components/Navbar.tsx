@@ -76,7 +76,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative text-sm font-medium transition-colors duration-200 after:absolute after:-bottom-1.5 after:left-0 after:h-[1.5px] after:rounded-full after:bg-accent after:transition-all after:duration-300 ${
+                    className={`relative text-base font-medium transition-colors duration-200 after:absolute after:-bottom-1.5 after:left-0 after:h-[1.5px] after:rounded-full after:bg-accent after:transition-all after:duration-300 ${
                       active
                         ? "text-white after:w-full"
                         : "text-background/75 hover:text-white after:w-0 hover:after:w-full"
@@ -94,7 +94,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-md border border-background/20 px-3.5 py-2 text-sm font-medium text-background/75 transition-all duration-200 hover:border-accent/60 hover:text-white"
+              className="inline-flex items-center gap-1.5 rounded-md border border-background/20 px-3.5 py-2 text-base font-medium text-background/75 transition-all duration-200 hover:border-accent/60 hover:text-white"
             >
               <ClipboardIcon />
               Callback
@@ -102,7 +102,7 @@ export default function Navbar() {
 
             <a
               href={site.phoneHref}
-              className="shine btn-3d inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-primary"
+              className="shine btn-3d inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-base font-semibold text-primary"
             >
               <span className="relative z-[1] inline-flex items-center gap-2">
                 <PhoneIcon />

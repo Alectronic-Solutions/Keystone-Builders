@@ -56,7 +56,7 @@ export default function Footer() {
         {/* Brand column. */}
         <div className="space-y-5">
           <Logo dark />
-          <p className="max-w-xs text-sm leading-relaxed text-background/70">
+          <p className="max-w-xs text-base leading-relaxed text-background/70">
             Serving {site.serviceArea} since {site.foundedYear}. Residential and
             commercial construction built to last.
           </p>
@@ -86,7 +86,7 @@ export default function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-background/70 transition-colors hover:text-background"
+                  className="text-base text-background/70 transition-colors hover:text-background"
                 >
                   {item.label}
                 </Link>
@@ -100,7 +100,7 @@ export default function Footer() {
           <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
             Contact
           </h3>
-          <ul className="mt-4 space-y-2.5 text-sm">
+          <ul className="mt-4 space-y-2.5 text-base">
             <li>
               <a
                 href={site.phoneHref}
@@ -130,7 +130,7 @@ export default function Footer() {
           <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
             Credentials
           </h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-background/70">
+          <ul className="mt-4 space-y-2.5 text-base text-background/70">
             {credentials.map((c) => (
               <li key={c} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
@@ -143,7 +143,7 @@ export default function Footer() {
 
       {/* Bottom bar. */}
       <div className="border-t border-background/10">
-        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-background/50 sm:flex-row">
+        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 py-4 text-sm text-background/50 sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>

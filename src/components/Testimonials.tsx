@@ -43,7 +43,7 @@ export default function Testimonials({ tone = "white" }: { tone?: "white" | "lin
                 </span>
                 <div>
                   <p className="font-semibold text-primary">{t.name}</p>
-                  <p className="text-sm text-ink-soft">
+                  <p className="text-base text-ink-soft">
                     {t.project} &middot; {t.location}
                   </p>
                 </div>

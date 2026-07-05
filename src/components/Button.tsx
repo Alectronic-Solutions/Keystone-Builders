@@ -15,7 +15,7 @@ const variants = {
 const solid = new Set(["primary", "accent"]);
 
 const base =
-  "shine inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 text-sm font-semibold transition-all duration-200";
+  "shine inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 text-base font-semibold transition-all duration-200";
 
 export default function Button({
   href,

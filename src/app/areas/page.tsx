@@ -131,7 +131,7 @@ export default function AreasPage() {
               </span>
               <div>
                 <p className="font-display text-xl font-bold text-primary">{h.stat}</p>
-                <p className="mt-0.5 text-sm text-ink-soft">{h.label}</p>
+                <p className="mt-0.5 text-base text-ink-soft">{h.label}</p>
               </div>
             </div>
           ))}
@@ -155,7 +155,7 @@ export default function AreasPage() {
                 <span className="mt-2 block h-0.5 w-8 rounded-full bg-accent" />
                 <ul className="mt-4 space-y-2">
                   {county.communities.map((c) => (
-                    <li key={c} className="flex items-center gap-2 text-sm text-ink-soft">
+                    <li key={c} className="flex items-center gap-2 text-base text-ink-soft">
                       <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                       {c}
                     </li>
@@ -186,7 +186,7 @@ export default function AreasPage() {
           />
         </Reveal>
         <Reveal className="mt-6">
-          <p className="text-sm text-ink-soft">
+          <p className="text-base text-ink-soft">
             Not sure if we cover your area?{" "}
             <Link href="/contact" className="font-semibold text-accent underline underline-offset-2 hover:text-primary">
               Reach out

@@ -69,7 +69,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
                 priority
               />
             </div>
-            <p className="mt-3 text-center text-sm text-background/70">{image.alt}</p>
+            <p className="mt-3 text-center text-base text-background/70">{image.alt}</p>
 
             {/* Prev / Next. */}
             {images.length > 1 && (
@@ -100,7 +100,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
                   >
                     <ChevronLeft />
                   </button>
-                  <span className="text-sm text-background/60">
+                  <span className="text-base text-background/60">
                     {(index ?? 0) + 1} / {images.length}
                   </span>
                   <button
@@ -128,7 +128,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
 
           {/* Counter (desktop). */}
           {images.length > 1 && (
-            <span className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-sm text-background/60 lg:block">
+            <span className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-base text-background/60 lg:block">
               {(index ?? 0) + 1} / {images.length}
             </span>
           )}

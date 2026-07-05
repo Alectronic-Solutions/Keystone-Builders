@@ -11,9 +11,9 @@ type DrawerProps = {
 };
 
 const inputBase =
-  "min-h-11 w-full rounded-md border border-primary/20 bg-white px-3.5 text-sm text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-accent focus:ring-2 focus:ring-accent/30";
+  "min-h-11 w-full rounded-md border border-primary/20 bg-white px-3.5 text-base text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-accent focus:ring-2 focus:ring-accent/30";
 
-const labelBase = "mb-1 block text-xs font-semibold uppercase tracking-wide text-primary";
+const labelBase = "mb-1 block text-sm font-semibold uppercase tracking-wide text-primary";
 
 export default function CallbackDrawer({ open, onClose }: DrawerProps) {
   const [submitting, setSubmitting] = useState(false);
@@ -90,7 +90,7 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
             <div className="flex items-center justify-between border-b border-primary/10 px-6 py-5">
               <div>
                 <p className="font-display text-lg font-bold text-primary">Request a callback</p>
-                <p className="mt-0.5 text-xs text-ink-soft">We call back within one business day.</p>
+                <p className="mt-0.5 text-sm text-ink-soft">We call back within one business day.</p>
               </div>
               <button
                 type="button"
@@ -182,14 +182,14 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="shine btn-3d mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent text-sm font-semibold text-primary disabled:opacity-70"
+                      className="shine btn-3d mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent text-base font-semibold text-primary disabled:opacity-70"
                     >
                       <span className="relative z-[1]">
                         {submitting ? "Sending..." : "Request callback"}
                       </span>
                     </button>
 
-                    <p className="text-center text-xs text-ink-soft">
+                    <p className="text-center text-sm text-ink-soft">
                       Or call us now:{" "}
                       <a href={site.phoneHref} className="font-semibold text-accent">
                         {site.phoneDisplay}

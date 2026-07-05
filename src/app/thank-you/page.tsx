@@ -31,7 +31,7 @@ export default function ThankYouPage() {
         Someone from our team will follow up within one business day to schedule
         your free site visit. We look forward to learning about your project.
       </p>
-      <p className="mt-8 text-sm text-ink-soft">
+      <p className="mt-8 text-base text-ink-soft">
         Returning to the homepage in{" "}
         <span className="font-semibold text-primary">{seconds}</span>{" "}
         second{seconds !== 1 ? "s" : ""}

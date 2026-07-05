@@ -122,7 +122,7 @@ export default function EstimateForm() {
           </span>
         </button>
 
-        <p className="text-xs text-ink-soft">
+        <p className="text-sm text-ink-soft">
           We respond within one business day. Your info is never shared.{" "}
           <a href="/privacy" className="underline underline-offset-2 hover:text-ink">Privacy policy</a>.
         </p>
@@ -159,7 +159,7 @@ export default function EstimateForm() {
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="shine btn-3d mt-8 inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-6 text-sm font-semibold text-primary"
+                className="shine btn-3d mt-8 inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-6 text-base font-semibold text-primary"
               >
                 <span className="relative z-[1]">Done</span>
               </button>

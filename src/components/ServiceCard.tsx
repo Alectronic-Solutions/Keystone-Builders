@@ -24,10 +24,10 @@ export default function ServiceCard({ service }: { service: Service }) {
         <h3 className="font-display text-lg font-bold leading-snug text-primary">
           {service.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+        <p className="mt-2 flex-1 text-base leading-relaxed text-ink-soft">
           {service.short}
         </p>
-        <span className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-accent">
+        <span className="mt-5 flex items-center gap-1.5 text-base font-semibold text-accent">
           See details
           <svg
             viewBox="0 0 24 24"

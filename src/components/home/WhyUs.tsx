@@ -47,10 +47,10 @@ export default function WhyUs() {
             />
             {/* Floating trust badge. */}
             <div className="absolute bottom-5 left-5 right-5 rounded-xl bg-primary/90 px-5 py-4 backdrop-blur-sm">
-              <span className="inline-flex items-center gap-1 rounded-full bg-accent/20 px-2 py-0.5 text-[11px] font-semibold text-accent">
+              <span className="inline-flex items-center gap-1 rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
                 Our commitment
               </span>
-              <p className="mt-2 text-sm font-medium text-background/90">
+              <p className="mt-2 text-base font-medium text-background/90">
                 Every project gets a dedicated manager, a written schedule, and weekly updates.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function WhyUs() {
                   <h3 className="font-display text-base font-bold text-primary">
                     {reason.title}
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-1 text-base leading-relaxed text-ink-soft">
                     {reason.body}
                   </p>
                 </div>
@@ -103,10 +103,10 @@ export default function WhyUs() {
                   key={b.label}
                   className="rounded-lg border border-primary/10 bg-white px-3 py-3 text-center shadow-sm"
                 >
-                  <p className="text-sm font-bold text-primary">
+                  <p className="text-base font-bold text-primary">
                     {b.label}
                   </p>
-                  <p className="mt-0.5 text-xs text-ink-soft">{b.detail}</p>
+                  <p className="mt-0.5 text-sm text-ink-soft">{b.detail}</p>
                 </div>
               ))}
             </div>

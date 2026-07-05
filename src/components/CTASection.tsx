@@ -32,7 +32,7 @@ export default function CTASection({
               <p className="mt-4 text-base text-background/75 md:text-lg">{intro}</p>
 
               {/* Social proof strip. */}
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-background/60">
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-background/60">
                 <span className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
                   Free written estimates
@@ -54,7 +54,7 @@ export default function CTASection({
               </Button>
               <a
                 href={site.phoneHref}
-                className="group flex items-center gap-2 text-sm font-semibold text-background/80 transition-colors hover:text-background"
+                className="group flex items-center gap-2 text-base font-semibold text-background/80 transition-colors hover:text-background"
               >
                 <svg
                   viewBox="0 0 24 24"

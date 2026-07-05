@@ -35,7 +35,7 @@ export default function StatStrip() {
                   transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.08 + 0.3 }}
                 />
               </span>
-              <p className="mt-3 text-sm font-medium text-ink-soft">{stat.label}</p>
+              <p className="mt-3 text-base font-medium text-ink-soft">{stat.label}</p>
             </div>
           </Reveal>
         ))}

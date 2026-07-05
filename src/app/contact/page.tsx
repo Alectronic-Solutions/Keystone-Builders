@@ -64,7 +64,7 @@ export default function ContactPage() {
             {/* Form. */}
             <Reveal className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-primary/5 md:p-8">
               <h2 className="font-display text-2xl font-bold text-primary">Project details</h2>
-              <p className="mt-2 text-sm text-ink-soft">
+              <p className="mt-2 text-base text-ink-soft">
                 The more you share, the more accurate your estimate will be.
               </p>
               <div className="mt-6">
@@ -78,12 +78,12 @@ export default function ContactPage() {
                 <div>
                   <h2 className="font-display text-2xl font-bold text-primary">Talk to a builder</h2>
                   <span className="mt-3 block h-1 w-12 rounded-full bg-accent" />
-                  <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-4 text-base leading-relaxed text-ink-soft">
                     Prefer to talk it through? Give us a call and we will point you in the right direction.
                   </p>
                 </div>
 
-                <ul className="space-y-5 text-sm">
+                <ul className="space-y-5 text-base">
                   {contactDetails.map(({ label, value }) => (
                     <li key={label}>
                       <p className="font-semibold text-primary">{label}</p>
@@ -95,14 +95,14 @@ export default function ContactPage() {
                 {/* License badge. */}
                 <div className="rounded-lg bg-primary p-6 text-background">
                   <p className="font-display text-lg font-bold">Licensed and fully insured</p>
-                  <p className="mt-2 text-sm text-background/80">
+                  <p className="mt-2 text-base text-background/80">
                     General Liability and Workers Comp coverage on every job, so you are protected from the first day to the last.
                   </p>
                 </div>
 
                 {/* Map. */}
                 <div>
-                  <p className="mb-3 text-sm font-semibold text-primary">Our service area</p>
+                  <p className="mb-3 text-base font-semibold text-primary">Our service area</p>
                   <div className="overflow-hidden rounded-lg ring-1 ring-primary/10 shadow-sm">
                     <iframe
                       title="Keystone Builders Pittsburgh service area map"
@@ -115,7 +115,7 @@ export default function ContactPage() {
                       referrerPolicy="no-referrer-when-downgrade"
                     />
                   </div>
-                  <p className="mt-2 text-xs text-ink-soft">
+                  <p className="mt-2 text-sm text-ink-soft">
                     Serving Allegheny, Butler, Westmoreland &amp; Washington counties.
                   </p>
                 </div>

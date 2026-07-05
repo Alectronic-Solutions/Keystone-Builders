@@ -57,7 +57,7 @@ export default function ServicesPage() {
                   </p>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm text-ink">
+                      <li key={feature} className="flex items-center gap-3 text-base text-ink">
                         <span
                           aria-hidden="true"
                           className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-bold text-primary"

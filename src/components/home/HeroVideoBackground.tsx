@@ -1,11 +1,9 @@
 "use client";
 
 // HeroVideoBackground: crossfading looped video background for the Hero,
-// muted/inline/autoplay, falls back to a static poster when reduced motion
-// is requested.
+// muted/inline/autoplay.
 import { useCallback, useRef, useState } from "react";
-import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { basePath } from "@/lib/site";
 
 const VIDEO_SOURCES = [
@@ -15,7 +13,6 @@ const VIDEO_SOURCES = [
 ];
 
 export default function HeroVideoBackground() {
-  const reduce = useReducedMotion();
   const [activeIdx, setActiveIdx] = useState<0 | 1>(0);
   const nextVideoNumber = useRef(2);
   const videoRefs = [
@@ -44,25 +41,11 @@ export default function HeroVideoBackground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (reduce) {
-    return (
-      <Image
-        src={`${basePath}/images/hero-construction-site.jpg`}
-        alt="A custom two-story home under construction in the Pittsburgh area"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-    );
-  }
-
   return (
     <>
       <motion.video
         ref={videoRefs[0]}
         src={VIDEO_SOURCES[0]}
-        poster={`${basePath}/images/hero-construction-site.jpg`}
         muted
         playsInline
         autoPlay
@@ -75,7 +58,6 @@ export default function HeroVideoBackground() {
       <motion.video
         ref={videoRefs[1]}
         src={VIDEO_SOURCES[1]}
-        poster={`${basePath}/images/hero-construction-site.jpg`}
         muted
         playsInline
         preload="none"

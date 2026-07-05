@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <h3 className="font-display text-lg font-bold leading-snug text-white">
             {project.title}
           </h3>
-          <p className="mt-1 text-sm text-white/75">{project.location}</p>
+          <p className="mt-1 text-base text-white/75">{project.location}</p>
         </div>
       </div>
     </Link>

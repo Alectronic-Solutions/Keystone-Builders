@@ -64,7 +64,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <Reveal>
             <Link
               href="/projects"
-              className="text-sm font-semibold text-background/80 transition-colors hover:text-background"
+              className="text-base font-semibold text-background/80 transition-colors hover:text-background"
             >
               &larr; All projects
             </Link>
