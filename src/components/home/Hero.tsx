@@ -1,55 +1,25 @@
 "use client";
 
-// Hero: full-bleed construction image with a scroll-linked parallax background.
-import { useRef } from "react";
-import Image from "next/image";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+// Hero: full-bleed crossfading video background with headline copy.
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
-import { site, basePath } from "@/lib/site";
+import Eyebrow from "@/components/Eyebrow";
+import HeroVideoBackground from "@/components/home/HeroVideoBackground";
+import { site } from "@/lib/site";
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  // Background drifts down as the section scrolls out; disabled if reduced motion.
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "18%"]);
-
   return (
-    <section
-      ref={ref}
-      className="relative isolate flex min-h-[88svh] items-center overflow-hidden"
-    >
-      <motion.div
-        style={{ y }}
-        className="absolute inset-x-0 top-[-12%] -z-10 h-[124%]"
-      >
-        <Image
-          src={`${basePath}/images/hero-construction-site.jpg`}
-          alt="A custom two-story home under construction in the Pittsburgh area"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </motion.div>
-      {/* Slate wash so the white headline stays readable over the photo. */}
+    <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <HeroVideoBackground />
+      </div>
+      {/* Slate wash so the white headline stays readable over the video. */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40" />
 
       <div className="mx-auto w-full max-w-content px-4 py-24 sm:py-28">
         <div className="max-w-2xl">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
-              Licensed and Insured General Contractor
-            </p>
+            <Eyebrow invert>Licensed and Insured General Contractor</Eyebrow>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-4 font-display text-[2.5rem] font-bold leading-[1.05] text-background sm:text-5xl md:text-6xl">

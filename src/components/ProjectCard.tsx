@@ -22,12 +22,14 @@ export default function ProjectCard({ project }: { project: Project }) {
         {/* Bottom-heavy gradient so text has solid contrast without killing the image. */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
 
+        {/* Category tag pinned to the corner instead of stacked above the title. */}
+        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-primary">
+          {project.category}
+        </span>
+
         {/* Text sits above the gradient inside the same stacking context. */}
         <div className="absolute inset-x-0 bottom-0 p-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent">
-            {project.category}
-          </p>
-          <h3 className="mt-1 font-display text-lg font-bold leading-snug text-white">
+          <h3 className="font-display text-lg font-bold leading-snug text-white">
             {project.title}
           </h3>
           <p className="mt-1 text-sm text-white/75">{project.location}</p>

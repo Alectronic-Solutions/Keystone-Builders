@@ -1,5 +1,6 @@
 // Logo: keystone mark plus wordmark. Pass dark={true} when on a dark bg.
 import { site } from "@/lib/site";
+import { colors } from "@/lib/colors";
 
 export default function Logo({
   className = "",
@@ -17,11 +18,11 @@ export default function Logo({
       >
         <path
           d="M9 6 H23 L28 26 H4 Z"
-          fill={dark ? "#F5F1EB" : "#1C2B3A"}
+          fill={dark ? colors.background : colors.primary}
         />
         <path
           d="M14 6 H18 L19.2 26 H12.8 Z"
-          fill="#C9A96E"
+          fill={colors.accent}
         />
       </svg>
       <span

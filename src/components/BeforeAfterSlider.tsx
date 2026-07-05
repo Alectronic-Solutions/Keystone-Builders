@@ -1,9 +1,9 @@
 "use client";
 
 // BeforeAfterSlider: drag the divider to reveal before vs after images side by side.
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
+import { useInView, useReducedMotion, animate } from "framer-motion";
 
 type Props = {
   before: { src: string; alt: string };
@@ -12,10 +12,27 @@ type Props = {
 };
 
 export default function BeforeAfterSlider({ before, after, initialPosition = 50 }: Props) {
-  const [pct, setPct] = useState(initialPosition);
+  const [pct, setPct] = useState(0);
   const [active, setActive] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const inView = useInView(containerRef, { once: true, amount: 0.4 });
+
+  // One-shot reveal: sweep the divider from closed to its resting position the
+  // first time the slider enters view, then hand control to the user.
+  useEffect(() => {
+    if (reduce) {
+      setPct(initialPosition);
+      return;
+    }
+    if (!inView) return;
+    const controls = animate(0, initialPosition, {
+      duration: 1.2,
+      ease: "easeInOut",
+      onUpdate: setPct,
+    });
+    return () => controls.stop();
+  }, [inView, reduce, initialPosition]);
 
   const clamp = (v: number) => Math.min(100, Math.max(0, v));
 

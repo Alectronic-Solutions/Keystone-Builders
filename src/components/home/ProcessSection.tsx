@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { processSteps } from "@/lib/process";
+import { colors, accentFaint } from "@/lib/colors";
 
 function ProcessStep({
   step,
@@ -27,16 +28,16 @@ function ProcessStep({
       {/* Number: starts dim, glows to accent gold when in view. */}
       <motion.p
         className="font-display text-5xl font-bold leading-none"
-        initial={reduce ? false : { color: "rgba(201,169,110,0.2)" }}
-        animate={inView ? { color: "#C9A96E" } : {}}
+        initial={reduce ? false : { color: accentFaint }}
+        animate={inView ? { color: colors.accent } : {}}
         transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.18 + 0.25 }}
       >
         {step.number}
       </motion.p>
 
-      {/* Connector bar that grows after the number lights up. */}
+      {/* Connector bar that grows after the number lights up (the shared rail covers this at lg). */}
       <motion.span
-        className="mt-4 block h-px bg-accent/40"
+        className="mt-4 block h-px bg-accent/40 lg:hidden"
         initial={reduce ? false : { scaleX: 0, originX: 0 }}
         animate={inView ? { scaleX: 1 } : {}}
         transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.18 + 0.4 }}
@@ -59,6 +60,10 @@ function ProcessStep({
 }
 
 export default function ProcessSection() {
+  const railRef = useRef<HTMLDivElement>(null);
+  const railInView = useInView(railRef, { once: true, amount: 0.4 });
+  const reduce = useReducedMotion();
+
   return (
     <section className="bg-primary text-background">
       <div className="mx-auto max-w-content px-4 py-16 md:py-24">
@@ -67,11 +72,21 @@ export default function ProcessSection() {
           intro="A clear path from first call to final walkthrough, so you always know what comes next."
           invert
         />
-        <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, i) => (
-            <ProcessStep key={step.number} step={step} index={i} />
-          ))}
-        </ol>
+        <div ref={railRef} className="relative mt-14">
+          {/* Single connected line spanning all steps, filling in as the row comes into view. */}
+          <motion.span
+            aria-hidden="true"
+            className="absolute left-0 right-0 top-[4.75rem] hidden h-px bg-accent/40 lg:block"
+            initial={reduce ? false : { scaleX: 0, originX: 0 }}
+            animate={railInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+          <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <ProcessStep key={step.number} step={step} index={i} />
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import Eyebrow from "@/components/Eyebrow";
 
 export default function ParallaxPageHeader({
   title,
@@ -54,11 +55,7 @@ export default function ParallaxPageHeader({
 
       <div className="mx-auto w-full max-w-content px-4 pb-14 pt-20 md:pb-16 md:pt-24">
         <Reveal className="max-w-2xl">
-          {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
-              {eyebrow}
-            </p>
-          )}
+          {eyebrow && <Eyebrow invert>{eyebrow}</Eyebrow>}
           <h1 className="mt-3 font-display text-4xl font-bold leading-tight text-background md:text-5xl lg:text-6xl">
             {title}
           </h1>
