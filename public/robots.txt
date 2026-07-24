@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://keystonebuilders.com/sitemap.xml
+Sitemap: https://alectronic-solutions.github.io/Keystone-Builders/sitemap.xml

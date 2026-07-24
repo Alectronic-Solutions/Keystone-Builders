@@ -27,7 +27,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         <p className="mt-2 flex-1 text-base leading-relaxed text-ink-soft">
           {service.short}
         </p>
-        <span className="mt-5 flex items-center gap-1.5 text-base font-semibold text-accent">
+        <span className="mt-5 flex items-center gap-1.5 text-base font-semibold text-accent-ink">
           See details
           <svg
             viewBox="0 0 24 24"

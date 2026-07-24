@@ -1,7 +1,7 @@
 "use client";
 
 // EstimateForm: estimate request posting to FormSubmit. Shows a thank-you modal on submit.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/lib/site";
 
@@ -10,31 +10,51 @@ const inputBase =
 
 const labelBase = "mb-1.5 block text-sm font-semibold text-primary";
 
+function Required() {
+  return (
+    <>
+      <span aria-hidden="true" className="text-rust">{" "}*</span>
+      <span className="sr-only"> required</span>
+    </>
+  );
+}
+
 export default function EstimateForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!submitted) return;
+    closeButtonRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSubmitted(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [submitted]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
+    setError(false);
 
     const form = e.currentTarget;
     const data = new FormData(form);
 
     try {
-      await fetch(site.formSubmitAction, {
+      const res = await fetch(site.formSubmitAction, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
+      if (!res.ok) throw new Error("FormSubmit request failed");
+      setSubmitted(true);
+      form.reset();
     } catch {
-      // FormSubmit doesn't support JSON Accept header on free plan; the fetch
-      // will CORS-error but the form still delivers. Show success regardless.
+      setError(true);
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
-    setSubmitted(true);
-    form.reset();
   };
 
   return (
@@ -49,28 +69,32 @@ export default function EstimateForm() {
         <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
+        <p className="text-sm text-ink-soft">
+          <span aria-hidden="true" className="text-rust">*</span> Required
+        </p>
+
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="est-name" className={labelBase}>Name</label>
+            <label htmlFor="est-name" className={labelBase}>Name<Required /></label>
             <input id="est-name" name="name" type="text" required autoComplete="name"
               className={inputBase} placeholder="Jane Smith" />
           </div>
           <div>
-            <label htmlFor="est-phone" className={labelBase}>Phone</label>
+            <label htmlFor="est-phone" className={labelBase}>Phone<Required /></label>
             <input id="est-phone" name="phone" type="tel" required autoComplete="tel"
               className={inputBase} placeholder="(412) 555-0123" />
           </div>
         </div>
 
         <div>
-          <label htmlFor="est-email" className={labelBase}>Email</label>
+          <label htmlFor="est-email" className={labelBase}>Email<Required /></label>
           <input id="est-email" name="email" type="email" required autoComplete="email"
             className={inputBase} placeholder="jane@example.com" />
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="est-type" className={labelBase}>Project type</label>
+            <label htmlFor="est-type" className={labelBase}>Project type<Required /></label>
             <select id="est-type" name="project_type" required className={inputBase} defaultValue="">
               <option value="" disabled>Select a type</option>
               <option>New Home</option>
@@ -81,7 +105,7 @@ export default function EstimateForm() {
             </select>
           </div>
           <div>
-            <label htmlFor="est-timeline" className={labelBase}>Timeline</label>
+            <label htmlFor="est-timeline" className={labelBase}>Timeline<Required /></label>
             <select id="est-timeline" name="timeline" required className={inputBase} defaultValue="">
               <option value="" disabled>Select a timeline</option>
               <option>ASAP</option>
@@ -106,7 +130,7 @@ export default function EstimateForm() {
         </div>
 
         <div>
-          <label htmlFor="est-desc" className={labelBase}>Project description</label>
+          <label htmlFor="est-desc" className={labelBase}>Project description<Required /></label>
           <textarea id="est-desc" name="description" rows={5} required
             className={`${inputBase} resize-none py-3`}
             placeholder="Tell us about your project, your goals, and the neighborhood or address." />
@@ -121,6 +145,16 @@ export default function EstimateForm() {
             {submitting ? "Sending..." : "Request My Free Estimate"}
           </span>
         </button>
+
+        {error && (
+          <p role="alert" aria-live="assertive" className="text-sm font-semibold text-rust">
+            Something went wrong sending your request. Please try again, or call
+            us directly at{" "}
+            <a href={site.phoneHref} className="underline underline-offset-2">
+              {site.phoneDisplay}
+            </a>.
+          </p>
+        )}
 
         <p className="text-sm text-ink-soft">
           We respond within one business day. Your info is never shared.{" "}
@@ -139,6 +173,9 @@ export default function EstimateForm() {
             onClick={() => setSubmitted(false)}
           >
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="estimate-success-heading"
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
@@ -152,11 +189,12 @@ export default function EstimateForm() {
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
               </div>
-              <h2 className="font-display text-2xl font-bold text-primary">Request received!</h2>
+              <h2 id="estimate-success-heading" className="font-display text-2xl font-bold text-primary">Request received!</h2>
               <p className="mt-3 text-base leading-relaxed text-ink-soft">
                 Thanks for reaching out. A member of the Keystone Builders team will be in touch within one business day to discuss your project.
               </p>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={() => setSubmitted(false)}
                 className="shine btn-3d mt-8 inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-6 text-base font-semibold text-primary"

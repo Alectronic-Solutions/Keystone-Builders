@@ -143,7 +143,7 @@ export default function Footer() {
 
       {/* Bottom bar. */}
       <div className="border-t border-background/10">
-        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 py-4 text-sm text-background/50 sm:flex-row">
+        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 pb-20 pt-4 text-sm text-background/70 sm:flex-row sm:pb-4">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
@@ -164,7 +164,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group flex items-center gap-1.5 text-background/50 transition-colors hover:text-background"
+            className="group flex items-center gap-1.5 text-background/70 transition-colors hover:text-background"
           >
             <span>Back to top</span>
             <svg

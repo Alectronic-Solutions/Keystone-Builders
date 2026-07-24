@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Keystone Builders is a family-owned general contractor serving Greater Pittsburgh since 2009.",
+  alternates: {
+    canonical: `${site.url}/about/`,
+  },
 };
 
 const values = [

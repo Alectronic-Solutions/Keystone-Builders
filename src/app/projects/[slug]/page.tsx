@@ -8,6 +8,7 @@ import CTASection from "@/components/CTASection";
 import ProjectGallery from "@/components/ProjectGallery";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { projects, getProject } from "@/lib/projects";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -19,10 +20,13 @@ export function generateMetadata({
   params: { slug: string };
 }): Metadata {
   const project = getProject(params.slug);
-  if (!project) return { title: "Project not found" };
+  if (!project) return { title: "Project not found", robots: { index: false, follow: false } };
   return {
     title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: `${site.url}/projects/${project.slug}/`,
+    },
   };
 }
 
@@ -112,7 +116,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
 
-          {/* Before/after slider — remodel and renovation projects only. */}
+          {/* Before/after slider, remodel and renovation projects only. */}
           {isRemodel && project.gallery.length >= 2 && (
             <Reveal className="mt-16">
               <h2 className="mb-6 font-display text-2xl font-bold text-primary">

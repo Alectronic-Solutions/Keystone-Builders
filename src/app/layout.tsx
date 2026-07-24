@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  alternates: {
+    canonical: `${site.url}/`,
+  },
   openGraph: {
     type: "website",
     title: `${site.name} | General Contractor in ${site.city}`,
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     images: [
       {
-        url: "/images/hero-construction-site.jpg",
+        url: `${site.url}/images/hero-construction-site.jpg`,
         width: 1600,
         height: 900,
         alt: `${site.name} custom home under construction`,
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} | General Contractor in ${site.city}`,
     description: site.description,
-    images: ["/images/hero-construction-site.jpg"],
+    images: [`${site.url}/images/hero-construction-site.jpg`],
   },
 };
 

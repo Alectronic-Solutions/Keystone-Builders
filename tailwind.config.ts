@@ -8,7 +8,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#1C2B3A", // slate charcoal
-        accent: "#C9A96E", // warm stone gold
+        accent: "#C9A96E", // warm stone gold, decorative use and gold-on-dark only
+        "accent-ink": "#7A5D33", // darkened gold for text on white/linen, meets WCAG AA 4.5:1
         background: "#F5F1EB", // off-white linen
         rust: "#8B3A2A", // deep rust, use sparingly
         ink: "#1A1A1A", // primary text

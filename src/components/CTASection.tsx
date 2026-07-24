@@ -1,4 +1,4 @@
-// CTASection: closing call to action with phone number prominent — the page's conversion moment.
+// CTASection: closing call to action with phone number prominent, the page's conversion moment.
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import { site } from "@/lib/site";

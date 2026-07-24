@@ -50,7 +50,7 @@ export default function ParallaxPageHeader({
         />
       </motion.div>
 
-      {/* Gradient overlay — dark enough for text at any photo brightness. */}
+      {/* Gradient overlay, dark enough for text at any photo brightness. */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/40" />
 
       <div className="mx-auto w-full max-w-content px-4 pb-14 pt-20 md:pb-16 md:pt-24">

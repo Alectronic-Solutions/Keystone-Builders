@@ -49,7 +49,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
           className="fixed inset-0 z-[9000] flex items-center justify-center bg-primary/95 px-4"
           onClick={onClose}
         >
-          {/* Image container — click inside stops propagation so the image doesn't close. */}
+          {/* Image container. Click inside stops propagation so the image doesn't close. */}
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.96 }}
@@ -66,7 +66,6 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
                 fill
                 sizes="(min-width: 1024px) 90vw, 100vw"
                 className="object-contain"
-                priority
               />
             </div>
             <p className="mt-3 text-center text-base text-background/70">{image.alt}</p>

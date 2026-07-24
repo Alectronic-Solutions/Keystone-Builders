@@ -1,5 +1,5 @@
 // Eyebrow: small contained pill badge for category/context labels.
-// Not a bare overline (banned AI tell) — always a filled, rounded shape.
+// Not a bare overline (banned AI tell). Always a filled, rounded shape.
 import type { ReactNode } from "react";
 
 export default function Eyebrow({
@@ -11,8 +11,8 @@ export default function Eyebrow({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-accent ${
-        invert ? "bg-background/15" : "bg-accent/15"
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${
+        invert ? "bg-background/15 text-accent" : "bg-accent/15 text-accent-ink"
       }`}
     >
       <svg

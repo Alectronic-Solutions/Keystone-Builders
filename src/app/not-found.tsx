@@ -1,10 +1,16 @@
 // 404: friendly not-found page that keeps visitors moving toward a quote.
+import type { Metadata } from "next";
 import Button from "@/components/Button";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
     <section className="mx-auto flex max-w-content flex-col items-center justify-center px-4 py-28 text-center md:py-36">
-      <p className="font-display text-6xl font-bold text-accent">404</p>
+      <p className="font-display text-6xl font-bold text-accent-ink">404</p>
       <h1 className="mt-4 font-display text-3xl font-bold text-primary md:text-4xl">
         We could not find that page
       </h1>

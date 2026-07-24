@@ -18,6 +18,7 @@ const labelBase = "mb-1 block text-sm font-semibold uppercase tracking-wide text
 export default function CallbackDrawer({ open, onClose }: DrawerProps) {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); },
@@ -37,7 +38,7 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
   // Reset form state after drawer finishes closing.
   useEffect(() => {
     if (!open) {
-      const t = setTimeout(() => { setDone(false); setSubmitting(false); }, 400);
+      const t = setTimeout(() => { setDone(false); setSubmitting(false); setError(false); }, 400);
       return () => clearTimeout(t);
     }
   }, [open]);
@@ -45,18 +46,23 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    const data = new FormData(e.currentTarget);
+    setError(false);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     try {
-      await fetch(site.formSubmitAction, {
+      const res = await fetch(site.formSubmitAction, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
+      if (!res.ok) throw new Error("FormSubmit request failed");
+      setDone(true);
+      form.reset();
     } catch {
-      // FormSubmit CORS on free plan — form still delivers.
+      setError(true);
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
-    setDone(true);
   };
 
   return (
@@ -129,7 +135,7 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
                     <button
                       type="button"
                       onClick={onClose}
-                      className="mt-2 text-sm font-semibold text-accent underline underline-offset-2"
+                      className="mt-2 text-sm font-semibold text-accent-ink underline underline-offset-2"
                     >
                       Close
                     </button>
@@ -148,14 +154,26 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
+                    <p className="text-sm text-ink-soft">
+                      <span aria-hidden="true" className="text-rust">*</span> Required
+                    </p>
+
                     <div>
-                      <label htmlFor="cb-name" className={labelBase}>Your name</label>
+                      <label htmlFor="cb-name" className={labelBase}>
+                        Your name
+                        <span aria-hidden="true" className="text-rust"> *</span>
+                        <span className="sr-only"> required</span>
+                      </label>
                       <input id="cb-name" name="name" type="text" required autoComplete="name"
                         className={inputBase} placeholder="Jane Smith" />
                     </div>
 
                     <div>
-                      <label htmlFor="cb-phone" className={labelBase}>Best phone number</label>
+                      <label htmlFor="cb-phone" className={labelBase}>
+                        Best phone number
+                        <span aria-hidden="true" className="text-rust"> *</span>
+                        <span className="sr-only"> required</span>
+                      </label>
                       <input id="cb-phone" name="phone" type="tel" required autoComplete="tel"
                         className={inputBase} placeholder="(412) 555-0123" />
                     </div>
@@ -189,9 +207,15 @@ export default function CallbackDrawer({ open, onClose }: DrawerProps) {
                       </span>
                     </button>
 
+                    {error && (
+                      <p role="alert" aria-live="assertive" className="text-sm font-semibold text-rust">
+                        Something went wrong. Please try again, or call us directly.
+                      </p>
+                    )}
+
                     <p className="text-center text-sm text-ink-soft">
                       Or call us now:{" "}
-                      <a href={site.phoneHref} className="font-semibold text-accent">
+                      <a href={site.phoneHref} className="font-semibold text-accent-ink">
                         {site.phoneDisplay}
                       </a>
                     </p>

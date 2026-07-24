@@ -1,7 +1,7 @@
 // Services page: detailed breakdown of each service, deep-linkable by slug.
 import type { Metadata } from "next";
 import Image from "next/image";
-import { basePath } from "@/lib/site";
+import { basePath, site } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "New home construction, remodeling, additions, and commercial construction across Greater Pittsburgh.",
+  alternates: {
+    canonical: `${site.url}/services/`,
+  },
 };
 
 export default function ServicesPage() {

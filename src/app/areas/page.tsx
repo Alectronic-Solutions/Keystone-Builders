@@ -12,7 +12,10 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Areas We Serve",
   description:
-    "Keystone Builders serves homeowners and businesses across Greater Pittsburgh — Allegheny, Butler, Westmoreland, and Washington counties.",
+    "Keystone Builders serves homeowners and businesses across Greater Pittsburgh, including Allegheny, Butler, Westmoreland, and Washington counties.",
+  alternates: {
+    canonical: `${site.url}/areas/`,
+  },
 };
 
 const counties = [
@@ -175,7 +178,7 @@ export default function AreasPage() {
         />
         <Reveal className="mt-10 overflow-hidden rounded-xl shadow-md ring-1 ring-primary/10">
           <iframe
-            title="Keystone Builders service area — Pittsburgh, PA"
+            title="Keystone Builders service area, Pittsburgh, PA"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193785.17878707437!2d-80.19026689999999!3d40.44062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f16f48068503%3A0x8df915a15aa21b34!2sPittsburgh%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus"
             width="100%"
             height="440"
@@ -188,7 +191,7 @@ export default function AreasPage() {
         <Reveal className="mt-6">
           <p className="text-base text-ink-soft">
             Not sure if we cover your area?{" "}
-            <Link href="/contact" className="font-semibold text-accent underline underline-offset-2 hover:text-primary">
+            <Link href="/contact" className="font-semibold text-accent-ink underline underline-offset-2 hover:text-primary">
               Reach out
             </Link>{" "}
             and we will let you know within one business day.

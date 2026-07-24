@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Fixed nav — floats above everything, transparent → dark glass on scroll. */}
+      {/* Fixed nav, floats above everything, transparent to dark glass on scroll. */}
       <nav
         aria-label="Main navigation"
         className="fixed inset-x-0 z-50 transition-all duration-300"
@@ -54,7 +54,7 @@ export default function Navbar() {
             : "none",
         }}
       >
-        {/* Gold hairline at top — fades in as nav becomes opaque (premium detail). */}
+        {/* Gold hairline at top, fades in as nav becomes opaque (premium detail). */}
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent"
@@ -124,7 +124,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile menu — extends down from the glass nav. */}
+        {/* Mobile menu, extends down from the glass nav. */}
         <AnimatePresence>
           {open && (
             <motion.div

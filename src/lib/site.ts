@@ -16,7 +16,8 @@ export const site = {
   phoneHref: "tel:+14125550142",
 
   email: "info@keystonebuilders.com",
-  formSubmitAction: "https://formsubmit.co/info@keystonebuilders.com",
+  // FormSubmit's AJAX endpoint returns CORS-safe JSON so failed sends can be detected.
+  formSubmitAction: "https://formsubmit.co/ajax/info@keystonebuilders.com",
 
   license: "PA HIC #PA088416",
   foundedYear: 2009,
@@ -26,7 +27,8 @@ export const site = {
   region: "PA",
   regionName: "Pennsylvania",
 
-  url: "https://keystonebuilders.com",
+  // Real deployed URL (GitHub Pages project site, no custom domain configured).
+  url: `https://alectronic-solutions.github.io${basePath}`,
 
   // Headline proof points. Years in business is computed from foundedYear.
   projectsCompleted: "250+",

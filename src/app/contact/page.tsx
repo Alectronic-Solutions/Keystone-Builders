@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Request a free estimate from Keystone Builders, serving Greater Pittsburgh.",
+  alternates: {
+    canonical: `${site.url}/contact/`,
+  },
 };
 
 const contactDetails = [
@@ -35,7 +38,7 @@ const contactDetails = [
     value: (
       <span className="text-ink-soft">
         {site.serviceArea} and Allegheny County.{" "}
-        <Link href="/areas" className="font-semibold text-accent underline underline-offset-2 hover:text-primary">
+        <Link href="/areas" className="font-semibold text-accent-ink underline underline-offset-2 hover:text-primary">
           See all areas
         </Link>
       </span>

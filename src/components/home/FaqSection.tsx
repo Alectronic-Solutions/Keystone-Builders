@@ -1,6 +1,6 @@
 "use client";
 
-// FaqSection: common contractor questions answered — also generates FAQPage schema.
+// FaqSection: common contractor questions answered, also generates FAQPage schema.
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Section from "@/components/Section";

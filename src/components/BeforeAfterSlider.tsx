@@ -43,6 +43,14 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
     setPct(clamp(((clientX - rect.left) / rect.width) * 100));
   }, []);
 
+  const onHandleKeyDown = (e: React.KeyboardEvent) => {
+    const step = e.shiftKey ? 10 : 5;
+    if (e.key === "ArrowLeft") { e.preventDefault(); setPct((p) => clamp(p - step)); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); setPct((p) => clamp(p + step)); }
+    else if (e.key === "Home") { e.preventDefault(); setPct(0); }
+    else if (e.key === "End") { e.preventDefault(); setPct(100); }
+  };
+
   // Mouse handlers
   const onMouseDown = (e: React.MouseEvent) => {
     setActive(true);
@@ -54,7 +62,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
   };
   const onMouseUp = () => setActive(false);
 
-  // Touch handlers — touchstart needed to begin tracking
+  // Touch handlers. touchstart needed to begin tracking
   const onTouchStart = (e: React.TouchEvent) => {
     setActive(true);
     updateFromClientX(e.touches[0].clientX);
@@ -85,8 +93,6 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
   return (
     <div
       ref={containerRef}
-      role="img"
-      aria-label="Before and after comparison. Drag the divider to compare."
       className="relative aspect-[16/9] select-none overflow-hidden rounded-lg shadow-lg cursor-col-resize touch-none"
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
@@ -96,7 +102,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* After image — sits underneath, full width. */}
+      {/* After image, sits underneath, full width. */}
       <Image
         src={after.src}
         alt={after.alt}
@@ -105,7 +111,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
         sizes="(min-width: 1024px) 80vw, 100vw"
       />
 
-      {/* Before image — clipped to reveal only the left portion. */}
+      {/* Before image, clipped to reveal only the left portion. */}
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
@@ -119,12 +125,21 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
         />
       </div>
 
-      {/* Divider line + drag handle. */}
+      {/* Divider line + drag handle. The handle is the one focusable, keyboard-operable control. */}
       <div
         className="pointer-events-none absolute inset-y-0 z-10 w-0.5 bg-white/80"
         style={{ left: `${pct}%` }}
       >
-        <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-xl ring-1 ring-primary/10">
+        <div
+          role="slider"
+          tabIndex={0}
+          aria-label="Comparison position"
+          aria-valuenow={Math.round(pct)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          onKeyDown={onHandleKeyDown}
+          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-col-resize items-center justify-center rounded-full bg-white shadow-xl ring-1 ring-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
+        >
           <svg
             viewBox="0 0 24 24"
             className="h-5 w-5 text-primary"
@@ -136,6 +151,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
           >
             <path d="M8 9l-4 3 4 3M16 9l4 3-4 3" />
           </svg>
+          <span className="sr-only">Use left and right arrow keys to compare before and after.</span>
         </div>
       </div>
 

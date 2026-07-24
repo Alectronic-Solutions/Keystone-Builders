@@ -1,9 +1,11 @@
 "use client";
 
 // HeroVideoBackground: crossfading looped video background for the Hero,
-// muted/inline/autoplay.
+// muted/inline/autoplay. Skips the video entirely when the user prefers
+// reduced motion, showing a static poster frame instead.
 import { useCallback, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { basePath } from "@/lib/site";
 
 const VIDEO_SOURCES = [
@@ -12,7 +14,10 @@ const VIDEO_SOURCES = [
   `${basePath}/videos/hero-construction-3.mp4`,
 ];
 
+const POSTER = `${basePath}/images/hero-video-poster.jpg`;
+
 export default function HeroVideoBackground() {
+  const reduce = useReducedMotion();
   const [activeIdx, setActiveIdx] = useState<0 | 1>(0);
   const nextVideoNumber = useRef(2);
   const videoRefs = [
@@ -21,7 +26,7 @@ export default function HeroVideoBackground() {
   ];
 
   const handleEnded = useCallback((elIdx: 0 | 1) => {
-    // The hidden element already holds the source that plays next — just start it.
+    // The hidden element already holds the source that plays next, just start it.
     const hiddenIdx = elIdx === 0 ? 1 : 0;
     const hiddenEl = videoRefs[hiddenIdx].current;
     if (hiddenEl) {
@@ -41,11 +46,25 @@ export default function HeroVideoBackground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (reduce) {
+    return (
+      <Image
+        src={POSTER}
+        alt=""
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+      />
+    );
+  }
+
   return (
     <>
       <motion.video
         ref={videoRefs[0]}
         src={VIDEO_SOURCES[0]}
+        poster={POSTER}
         muted
         playsInline
         autoPlay

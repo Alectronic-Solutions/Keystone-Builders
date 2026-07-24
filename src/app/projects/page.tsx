@@ -1,6 +1,6 @@
 // Projects page: the full portfolio grid of case studies.
 import type { Metadata } from "next";
-import { basePath } from "@/lib/site";
+import { basePath, site } from "@/lib/site";
 import ParallaxPageHeader from "@/components/ParallaxPageHeader";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Custom homes, remodels, additions, and commercial projects built by Keystone Builders across Greater Pittsburgh.",
+  alternates: {
+    canonical: `${site.url}/projects/`,
+  },
 };
 
 export default function ProjectsPage() {
