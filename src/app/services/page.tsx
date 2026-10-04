@@ -1,4 +1,4 @@
-// Services page: detailed breakdown of each service, deep-linkable by slug.
+// Services page: overview of each service, linking to its detail page.
 import type { Metadata } from "next";
 import Image from "next/image";
 import { basePath, site } from "@/lib/site";
@@ -21,7 +21,6 @@ export default function ServicesPage() {
   return (
     <>
       <ParallaxPageHeader
-        eyebrow="Our Services"
         title="One team for the whole build"
         intro="From a single bathroom to a ground-up commercial space, we handle design, permitting, and construction under one roof."
         image={`${basePath}/images/framing-two-story.jpg`}
@@ -71,8 +70,11 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-8">
-                    <Button href="/contact" variant="primary">
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <Button href={`/services/${service.slug}`} variant="primary">
+                      Explore {service.title.toLowerCase()}
+                    </Button>
+                    <Button href="/contact" variant="outline">
                       Get a free estimate
                     </Button>
                   </div>

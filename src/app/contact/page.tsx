@@ -20,7 +20,7 @@ const contactDetails = [
   {
     label: "Phone",
     value: (
-      <a href={site.phoneHref} className="text-ink-soft transition-colors hover:text-accent">
+      <a href={site.phoneHref} className="inline-flex min-h-11 items-center text-ink-soft transition-colors hover:text-primary">
         {site.phoneDisplay}
       </a>
     ),
@@ -28,7 +28,7 @@ const contactDetails = [
   {
     label: "Email",
     value: (
-      <a href={`mailto:${site.email}`} className="text-ink-soft transition-colors hover:text-accent">
+      <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center break-all text-ink-soft transition-colors hover:text-primary">
         {site.email}
       </a>
     ),
@@ -54,7 +54,6 @@ export default function ContactPage() {
   return (
     <>
       <ParallaxPageHeader
-        eyebrow="Get Started"
         title="Request your free estimate"
         intro="Tell us about your project and we will follow up to schedule a site visit. Most estimates go out within a few business days."
         image={`${basePath}/images/foundation-crew.jpg`}
@@ -86,7 +85,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <ul className="space-y-5 text-base">
+                <ul className="space-y-4 text-base">
                   {contactDetails.map(({ label, value }) => (
                     <li key={label}>
                       <p className="font-semibold text-primary">{label}</p>
@@ -110,9 +109,7 @@ export default function ContactPage() {
                     <iframe
                       title="Keystone Builders Pittsburgh service area map"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193785.17878707437!2d-80.19026689999999!3d40.44062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f16f48068503%3A0x8df915a15aa21b34!2sPittsburgh%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus"
-                      width="100%"
-                      height="220"
-                      style={{ border: 0, display: "block" }}
+                      className="block h-[260px] w-full border-0 lg:h-[220px]"
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"

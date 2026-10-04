@@ -12,12 +12,11 @@ export default function ScrollProgress() {
     restDelta: 0.001,
   });
 
-  if (reduce) return null;
-
+  // Same element either way so hydration matches; reduced motion just skips the spring.
   return (
     <motion.div
       aria-hidden="true"
-      style={{ scaleX }}
+      style={{ scaleX: reduce ? scrollYProgress : scaleX }}
       className="fixed inset-x-0 top-0 z-[9998] h-[2px] origin-left bg-accent"
     />
   );

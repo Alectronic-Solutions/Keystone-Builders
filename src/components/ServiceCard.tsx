@@ -1,4 +1,4 @@
-// ServiceCard: tall image card linking to a service detail section.
+// ServiceCard: tall image card linking to a service detail page.
 import Image from "next/image";
 import Link from "next/link";
 import type { Service } from "@/lib/services";
@@ -6,8 +6,8 @@ import type { Service } from "@/lib/services";
 export default function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
-      href={`/services#${service.slug}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-primary/8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20"
+      href={`/services/${service.slug}`}
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20"
     >
       <div className="relative aspect-[3/2] overflow-hidden">
         <Image

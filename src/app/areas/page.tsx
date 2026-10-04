@@ -30,9 +30,7 @@ const counties = [
       "Sewickley",
       "Upper St. Clair",
       "Bethel Park",
-      "Peters Township",
       "North Hills",
-      "Cranberry Township",
       "McCandless",
       "Gibsonia",
       "Wexford",
@@ -44,7 +42,6 @@ const counties = [
     communities: [
       "Cranberry Township",
       "Mars",
-      "Wexford",
       "Valencia",
       "Zelienople",
       "Butler",
@@ -117,7 +114,6 @@ export default function AreasPage() {
   return (
     <>
       <ParallaxPageHeader
-        eyebrow="Service Area"
         title="Serving Greater Pittsburgh"
         intro="Keystone Builders works across four counties in southwestern Pennsylvania. If you are in or near the communities listed below, we can come to you."
         image={`${basePath}/images/home-exterior-modern.jpg`}
@@ -126,7 +122,7 @@ export default function AreasPage() {
 
       {/* Coverage highlights. */}
       <section className="bg-white border-b border-primary/10">
-        <div className="mx-auto grid max-w-content gap-8 px-4 py-10 md:grid-cols-3">
+        <div className="mx-auto grid max-w-content gap-6 px-4 py-10 md:grid-cols-3 md:gap-8">
           {highlights.map((h) => (
             <div key={h.stat} className="flex items-start gap-4">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
@@ -180,9 +176,7 @@ export default function AreasPage() {
           <iframe
             title="Keystone Builders service area, Pittsburgh, PA"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193785.17878707437!2d-80.19026689999999!3d40.44062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f16f48068503%3A0x8df915a15aa21b34!2sPittsburgh%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus"
-            width="100%"
-            height="440"
-            style={{ border: 0, display: "block" }}
+            className="block h-[320px] w-full border-0 md:h-[440px]"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

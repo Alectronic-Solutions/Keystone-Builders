@@ -1,6 +1,6 @@
 // WhyUs: differentiators with a trust badge strip and crew photo.
 import Image from "next/image";
-import { basePath } from "@/lib/site";
+import { basePath, site } from "@/lib/site";
 import Section from "@/components/Section";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
@@ -25,10 +25,10 @@ const reasons = [
 ];
 
 const badges = [
-  { label: "PA Licensed", detail: "HIC #PA088416" },
+  { label: "PA Licensed", detail: site.license.replace(/^PA\s+/, "") },
   { label: "Fully Insured", detail: "GL + Workers Comp" },
-  { label: "Since 2009", detail: "15+ years building" },
-  { label: "98% On Time", detail: "Proven track record" },
+  { label: `Since ${site.foundedYear}`, detail: `${new Date().getFullYear() - site.foundedYear}+ years building` },
+  { label: `${site.onTimeRate} On Time`, detail: "Proven track record" },
 ];
 
 export default function WhyUs() {
@@ -37,7 +37,7 @@ export default function WhyUs() {
       <div className="grid items-center gap-14 lg:grid-cols-2">
         {/* Photo side. */}
         <Reveal className="relative order-last lg:order-first">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl sm:aspect-[4/3] lg:aspect-[4/5]">
             <Image
               src={`${basePath}/images/crew-engineers.jpg`}
               alt="Two Keystone Builders project leads reviewing plans on site"
@@ -46,11 +46,8 @@ export default function WhyUs() {
               className="object-cover"
             />
             {/* Floating trust badge. */}
-            <div className="absolute bottom-5 left-5 right-5 rounded-xl bg-primary/90 px-5 py-4 backdrop-blur-sm">
-              <span className="inline-flex items-center gap-1 rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
-                Our commitment
-              </span>
-              <p className="mt-2 text-base font-medium text-background/90">
+            <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-primary/90 px-4 py-4 backdrop-blur-sm sm:bottom-5 sm:left-5 sm:right-5 sm:px-5">
+              <p className="text-base font-medium text-background/90">
                 Every project gets a dedicated manager, a written schedule, and weekly updates.
               </p>
             </div>

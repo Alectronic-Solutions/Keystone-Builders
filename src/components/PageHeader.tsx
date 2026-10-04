@@ -1,23 +1,20 @@
 // PageHeader: compact title band at the top of inner pages.
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
-import Eyebrow from "@/components/Eyebrow";
 
 export default function PageHeader({
   title,
   intro,
-  eyebrow,
 }: {
   title: string;
   intro?: ReactNode;
-  eyebrow?: string;
 }) {
   return (
     <section className="bg-primary text-background">
-      <div className="mx-auto max-w-content px-4 pb-14 pt-16 md:pb-16 md:pt-20">
+      {/* Top padding clears the fixed navbar (about 108px tall at page top). */}
+      <div className="mx-auto max-w-content px-4 pb-14 pt-32 md:pb-16 md:pt-36">
         <Reveal className="max-w-2xl">
-          {eyebrow && <Eyebrow invert>{eyebrow}</Eyebrow>}
-          <h1 className="mt-3 font-display text-4xl font-bold leading-tight md:text-5xl">
+          <h1 className="font-display text-[2.25rem] font-bold leading-tight text-background md:text-5xl">
             {title}
           </h1>
           {intro && (

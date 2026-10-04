@@ -20,7 +20,6 @@ export default function ProjectsPage() {
   return (
     <>
       <ParallaxPageHeader
-        eyebrow="Our Work"
         title="Projects across Greater Pittsburgh"
         intro="A selection of recent homes, remodels, and commercial builds. Each one delivered on the scope and schedule we committed to."
         image={`${basePath}/images/home-exterior-glass.jpg`}

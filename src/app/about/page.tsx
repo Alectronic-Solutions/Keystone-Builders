@@ -39,7 +39,6 @@ export default function AboutPage() {
   return (
     <>
       <ParallaxPageHeader
-        eyebrow="About Keystone"
         title="A Pittsburgh builder you can count on"
         intro="Family owned since 2009, we have grown from kitchen remodels into one of the region's trusted names in custom homes and commercial construction."
         image={`${basePath}/images/crew-working.jpg`}

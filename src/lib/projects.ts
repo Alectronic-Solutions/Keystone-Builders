@@ -15,6 +15,12 @@ export type Project = {
   image: string;
   imageAlt: string;
   gallery: { src: string; alt: string }[];
+  // Matched shots from the same camera position, shown in the before/after slider.
+  comparisons?: {
+    label: string;
+    before: { src: string; alt: string };
+    after: { src: string; alt: string };
+  }[];
   challenge: string;
   solution: string;
   result: string;
@@ -56,7 +62,7 @@ export const projects: Project[] = [
     value: "$185K",
     year: "2024",
     summary:
-      "A closed-off 1920s kitchen reborn as one open, light-filled gathering space.",
+      "A closed-off 1920s kitchen opened up into one bright room for cooking and eating.",
     image: `${basePath}/images/kitchen-blue-granite.jpg`,
     imageAlt: "Remodeled kitchen with blue cabinetry and a granite island",
     gallery: [
@@ -129,7 +135,7 @@ export const projects: Project[] = [
     timeline: "9 weeks",
     value: "$95K",
     year: "2025",
-    summary: "A dated primary bath reimagined as a marble spa retreat.",
+    summary: "A dated primary bath rebuilt with marble, a freestanding tub, and a walk-in shower.",
     image: `${basePath}/images/bath-luxury-marble.jpg`,
     imageAlt: "Luxury bathroom with marble surfaces and a dual vanity",
     gallery: [
@@ -167,6 +173,80 @@ export const projects: Project[] = [
       "We graded for positive drainage, installed a French drain system, and routed construction traffic to preserve the tree line.",
     result:
       "A five-bedroom family home that sits naturally on the lot, with a dry basement and the original trees intact.",
+  },
+  {
+    slug: "brookline-whole-home-renovation",
+    title: "Brookline Whole-Home Renovation",
+    category: "Remodeling and Renovations",
+    location: "Brookline, Pittsburgh",
+    squareFootage: "1,450 sq ft",
+    timeline: "12 weeks",
+    value: "$138K",
+    year: "2025",
+    summary:
+      "A tired 1950s brick ranch brought up to date room by room, from the kitchen and hall bath to the floors and lighting.",
+    image: `${basePath}/images/whole-home-kitchen-after.jpg`,
+    imageAlt: "Renovated kitchen with dark wood cabinets, stone-look counters, and stainless appliances",
+    gallery: [
+      { src: `${basePath}/images/whole-home-living-after.jpg`, alt: "Living room with refinished oak floors, recessed lights, and a ceiling fan" },
+      { src: `${basePath}/images/whole-home-bedroom-after.jpg`, alt: "Primary bedroom with mirrored closet doors and refinished floors" },
+      { src: `${basePath}/images/whole-home-living-before.jpg`, alt: "The living room before the renovation" },
+    ],
+    comparisons: [
+      {
+        label: "Kitchen",
+        before: { src: `${basePath}/images/whole-home-kitchen-before.jpg`, alt: "The original kitchen with white laminate cabinets and worn vinyl flooring" },
+        after: { src: `${basePath}/images/whole-home-kitchen-after.jpg`, alt: "The new kitchen with dark wood cabinets and stainless appliances" },
+      },
+      {
+        label: "Hall bath",
+        before: { src: `${basePath}/images/whole-home-bath-before.jpg`, alt: "The original hall bath with a dated vanity and medicine cabinet" },
+        after: { src: `${basePath}/images/whole-home-bath-after.jpg`, alt: "The updated hall bath with a new vanity, lighting, and door" },
+      },
+    ],
+    challenge:
+      "The owners bought the house with its original layout intact and nothing updated since the 1990s. They wanted it move-in ready in one pass, on a fixed budget, without changing the floor plan.",
+    solution:
+      "We phased the work so the kitchen and bath were done first, then refinished the original oak floors, added recessed lighting and ceiling fans, and painted throughout. Keeping plumbing and walls in place kept the budget where it needed to be.",
+    result:
+      "A new kitchen and hall bath, refinished floors, and updated lighting in every room, delivered in twelve weeks and within the original contract price.",
+  },
+  {
+    slug: "dormont-kitchen-remodel",
+    title: "Dormont Galley Kitchen Remodel",
+    category: "Remodeling and Renovations",
+    location: "Dormont",
+    squareFootage: "320 sq ft",
+    timeline: "8 weeks",
+    value: "$64K",
+    year: "2026",
+    summary:
+      "A worn-out galley kitchen in a 1930s house rebuilt with shaker cabinets, new counters, and durable plank flooring.",
+    image: `${basePath}/images/galley-kitchen-after.jpg`,
+    imageAlt: "Remodeled galley kitchen with gray shaker cabinets and stainless appliances",
+    gallery: [
+      { src: `${basePath}/images/galley-kitchen-after-2.jpg`, alt: "The far wall of the kitchen with new cabinets and a range" },
+      { src: `${basePath}/images/galley-kitchen-after.jpg`, alt: "Looking down the length of the remodeled kitchen" },
+      { src: `${basePath}/images/galley-kitchen-before.jpg`, alt: "The kitchen before the remodel" },
+    ],
+    comparisons: [
+      {
+        label: "Looking toward the windows",
+        before: { src: `${basePath}/images/galley-kitchen-before.jpg`, alt: "The original kitchen with open shelving, old appliances, and carpet runners" },
+        after: { src: `${basePath}/images/galley-kitchen-after.jpg`, alt: "The remodeled kitchen with gray cabinets and plank flooring" },
+      },
+      {
+        label: "Range wall",
+        before: { src: `${basePath}/images/galley-kitchen-before-2.jpg`, alt: "The original range wall with open shelves and a coil-top stove" },
+        after: { src: `${basePath}/images/galley-kitchen-after-2.jpg`, alt: "The new range wall with shaker cabinets and a stainless range" },
+      },
+    ],
+    challenge:
+      "Open shelves, a coil-top range, and patched flooring made the kitchen hard to keep clean, and the old cabinets had no usable storage above the counters.",
+    solution:
+      "We kept the plumbing and window wall where they were, installed full-height shaker cabinets with a vented microwave over the range, and laid waterproof plank flooring through the whole room.",
+    result:
+      "Twice the closed storage, new appliances, and a floor that stands up to daily use, finished in eight weeks with the family living at home.",
   },
 ];
 

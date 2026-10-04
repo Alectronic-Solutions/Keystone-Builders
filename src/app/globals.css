@@ -7,6 +7,11 @@
     scroll-behavior: smooth;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-background text-ink font-sans antialiased;
     overflow-x: hidden;
@@ -43,11 +48,13 @@
     will-change: transform;
   }
 
-  .btn-3d:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow:
-      0 12px 24px -8px rgba(28, 43, 58, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  @media (hover: hover) and (pointer: fine) {
+    .btn-3d:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow:
+        0 12px 24px -8px rgba(28, 43, 58, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
   }
 
   .btn-3d:active {
@@ -81,8 +88,10 @@
     pointer-events: none;
   }
 
-  .shine:hover::before {
-    left: 160%;
+  @media (hover: hover) and (pointer: fine) {
+    .shine:hover::before {
+      left: 160%;
+    }
   }
 }
 
@@ -99,5 +108,9 @@
 
   .btn-3d:hover {
     transform: none;
+  }
+
+  .shine:hover::before {
+    left: -160%;
   }
 }

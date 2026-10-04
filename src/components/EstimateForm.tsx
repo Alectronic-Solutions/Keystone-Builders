@@ -1,9 +1,9 @@
 "use client";
 
-// EstimateForm: estimate request posting to FormSubmit. Shows a thank-you modal on submit.
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { site } from "@/lib/site";
+// EstimateForm: estimate request form. Demo site, so submit opens the thank-you modal instead of sending.
+import { useState } from "react";
+import Link from "next/link";
+import DemoSubmitModal, { fakeSubmit, type DemoSubmission } from "@/components/DemoSubmitModal";
 
 const inputBase =
   "min-h-12 w-full rounded-md border border-primary/20 bg-white px-4 text-base text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-accent focus:ring-2 focus:ring-accent/30";
@@ -21,40 +21,18 @@ function Required() {
 
 export default function EstimateForm() {
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!submitted) return;
-    closeButtonRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSubmitted(false); };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [submitted]);
+  const [submission, setSubmission] = useState<DemoSubmission | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    setError(false);
-
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(site.formSubmitAction, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (!res.ok) throw new Error("FormSubmit request failed");
-      setSubmitted(true);
-      form.reset();
-    } catch {
-      setError(true);
-    } finally {
-      setSubmitting(false);
-    }
+    const name = await fakeSubmit(e.currentTarget);
+    setSubmitting(false);
+    setSubmission({
+      name,
+      message:
+        "On the live site, your estimate request would go straight to our team, and a project manager would call within one business day to schedule your free site visit.",
+    });
   };
 
   return (
@@ -63,12 +41,6 @@ export default function EstimateForm() {
         onSubmit={handleSubmit}
         className="space-y-5"
       >
-        {/* FormSubmit configuration. */}
-        <input type="hidden" name="_subject" value="New estimate request from keystonebuilders.com" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
-
         <p className="text-sm text-ink-soft">
           <span aria-hidden="true" className="text-rust">*</span> Required
         </p>
@@ -146,65 +118,13 @@ export default function EstimateForm() {
           </span>
         </button>
 
-        {error && (
-          <p role="alert" aria-live="assertive" className="text-sm font-semibold text-rust">
-            Something went wrong sending your request. Please try again, or call
-            us directly at{" "}
-            <a href={site.phoneHref} className="underline underline-offset-2">
-              {site.phoneDisplay}
-            </a>.
-          </p>
-        )}
-
         <p className="text-sm text-ink-soft">
           We respond within one business day. Your info is never shared.{" "}
-          <a href="/privacy" className="underline underline-offset-2 hover:text-ink">Privacy policy</a>.
+          <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">Privacy policy</Link>.
         </p>
       </form>
 
-      {/* Thank-you modal. */}
-      <AnimatePresence>
-        {submitted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[8000] flex items-center justify-center bg-primary/70 px-4 backdrop-blur-sm"
-            onClick={() => setSubmitted(false)}
-          >
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="estimate-success-heading"
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 28 }}
-              className="relative w-full max-w-md rounded-2xl bg-background px-8 py-10 shadow-2xl text-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Checkmark circle. */}
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
-                <svg viewBox="0 0 24 24" className="h-8 w-8 text-accent" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              </div>
-              <h2 id="estimate-success-heading" className="font-display text-2xl font-bold text-primary">Request received!</h2>
-              <p className="mt-3 text-base leading-relaxed text-ink-soft">
-                Thanks for reaching out. A member of the Keystone Builders team will be in touch within one business day to discuss your project.
-              </p>
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={() => setSubmitted(false)}
-                className="shine btn-3d mt-8 inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-6 text-base font-semibold text-primary"
-              >
-                <span className="relative z-[1]">Done</span>
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <DemoSubmitModal submission={submission} onClose={() => setSubmission(null)} />
     </>
   );
 }

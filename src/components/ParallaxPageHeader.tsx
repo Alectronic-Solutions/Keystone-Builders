@@ -5,18 +5,15 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/Reveal";
-import Eyebrow from "@/components/Eyebrow";
 
 export default function ParallaxPageHeader({
   title,
   intro,
-  eyebrow,
   image,
   imageAlt,
 }: {
   title: string;
   intro?: string;
-  eyebrow?: string;
   image: string;
   imageAlt: string;
 }) {
@@ -33,7 +30,7 @@ export default function ParallaxPageHeader({
   return (
     <section
       ref={ref}
-      className="relative isolate flex min-h-[52vh] items-end overflow-hidden md:min-h-[60vh]"
+      className="relative isolate flex min-h-[60svh] items-end overflow-hidden md:min-h-[60vh]"
     >
       {/* Parallax background. */}
       <motion.div
@@ -53,10 +50,10 @@ export default function ParallaxPageHeader({
       {/* Gradient overlay, dark enough for text at any photo brightness. */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/40" />
 
-      <div className="mx-auto w-full max-w-content px-4 pb-14 pt-20 md:pb-16 md:pt-24">
+      {/* Top padding clears the fixed navbar when the copy is taller than min-h. */}
+      <div className="mx-auto w-full max-w-content px-4 pb-12 pt-32 md:pb-16 md:pt-36">
         <Reveal className="max-w-2xl">
-          {eyebrow && <Eyebrow invert>{eyebrow}</Eyebrow>}
-          <h1 className="mt-3 font-display text-4xl font-bold leading-tight text-background md:text-5xl lg:text-6xl">
+          <h1 className="font-display text-[2.25rem] font-bold leading-tight text-background md:text-5xl lg:text-6xl">
             {title}
           </h1>
           {intro && (

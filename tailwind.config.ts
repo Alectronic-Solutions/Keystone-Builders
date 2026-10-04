@@ -4,6 +4,11 @@ import type { Config } from "tailwindcss";
 // JSX must reference these named tokens, never raw hex values.
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
+  // hover: utilities only apply on devices with a real pointer, so a tap on a
+  // phone never leaves a card lifted or an image zoomed.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

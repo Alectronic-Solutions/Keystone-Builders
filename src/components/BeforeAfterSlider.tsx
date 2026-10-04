@@ -51,56 +51,29 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
     else if (e.key === "End") { e.preventDefault(); setPct(100); }
   };
 
-  // Mouse handlers
-  const onMouseDown = (e: React.MouseEvent) => {
+  // Pointer events cover mouse, pen, and touch. touch-pan-y on the container
+  // lets a vertical swipe scroll the page on phones while a horizontal drag
+  // moves the divider; the browser fires pointercancel when it takes over a scroll.
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setActive(true);
-    updateFromClientX(e.clientX);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    // A touch might be the start of a page scroll, so only jump on mouse or pen.
+    if (e.pointerType !== "touch") updateFromClientX(e.clientX);
   };
-  const onMouseMove = (e: React.MouseEvent) => {
+  const onPointerMove = (e: React.PointerEvent) => {
     if (!active) return;
     updateFromClientX(e.clientX);
   };
-  const onMouseUp = () => setActive(false);
-
-  // Touch handlers. touchstart needed to begin tracking
-  const onTouchStart = (e: React.TouchEvent) => {
-    setActive(true);
-    updateFromClientX(e.touches[0].clientX);
-  };
-  const onTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault(); // prevent scroll while dragging
-    updateFromClientX(e.touches[0].clientX);
-  };
-  const onTouchEnd = () => setActive(false);
-
-  if (reduce) {
-    return (
-      <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-        <Image
-          src={after.src}
-          alt={after.alt}
-          fill
-          className="object-cover"
-          sizes="(min-width: 1024px) 80vw, 100vw"
-        />
-        <span className="absolute bottom-3 right-3 rounded bg-primary/80 px-2 py-0.5 text-xs font-semibold text-background">
-          After
-        </span>
-      </div>
-    );
-  }
+  const onPointerEnd = () => setActive(false);
 
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[16/9] select-none overflow-hidden rounded-lg shadow-lg cursor-col-resize touch-none"
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
+      className="relative aspect-[3/2] cursor-col-resize touch-pan-y select-none overflow-hidden rounded-lg shadow-lg"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerEnd}
+      onPointerCancel={onPointerEnd}
     >
       {/* After image, sits underneath, full width. */}
       <Image
@@ -108,7 +81,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
         alt={after.alt}
         fill
         className="pointer-events-none object-cover"
-        sizes="(min-width: 1024px) 80vw, 100vw"
+        sizes="(min-width: 1200px) 1100px, 100vw"
       />
 
       {/* Before image, clipped to reveal only the left portion. */}
@@ -121,7 +94,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
           alt={before.alt}
           fill
           className="object-cover"
-          sizes="(min-width: 1024px) 80vw, 100vw"
+          sizes="(min-width: 1200px) 1100px, 100vw"
         />
       </div>
 
@@ -138,7 +111,7 @@ export default function BeforeAfterSlider({ before, after, initialPosition = 50 
           aria-valuemin={0}
           aria-valuemax={100}
           onKeyDown={onHandleKeyDown}
-          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-col-resize items-center justify-center rounded-full bg-white shadow-xl ring-1 ring-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
+          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-col-resize items-center justify-center rounded-full bg-white shadow-xl ring-1 ring-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
         >
           <svg
             viewBox="0 0 24 24"

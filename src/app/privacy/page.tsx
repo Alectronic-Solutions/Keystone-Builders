@@ -26,7 +26,7 @@ const sections = [
   },
   {
     title: "Third-party services",
-    body: `Our website uses Google Fonts to load typography (Playfair Display and Inter). Google may log a request to serve these fonts from your browser. Photography on this site is sourced from Pexels. No other third-party scripts, ad networks, or tracking services are loaded on this website.`,
+    body: `Our typography (Playfair Display and Inter) is served from this website, so loading a page does not contact Google Fonts. The Contact and Areas We Serve pages embed a Google Maps view, and Google may log a request from your browser when that map loads. Photography on this site is sourced from Pexels, and the before-and-after renovation photos come from the Yellowstone National Park employee housing improvement project, which are in the public domain. No other third-party scripts, ad networks, or tracking services are loaded on this website.`,
   },
   {
     title: "Your rights",
@@ -42,7 +42,6 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Legal"
         title="Privacy Policy"
         intro={`Effective date: January 1, ${new Date().getFullYear()}. This policy covers how ${site.legalName} handles information collected through this website.`}
       />

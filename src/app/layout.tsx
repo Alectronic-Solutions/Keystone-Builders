@@ -6,6 +6,7 @@ import TrustStrip from "@/components/TrustStrip";
 import Footer from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
 import ScrollProgress from "@/components/ScrollProgress";
+import MotionProvider from "@/components/MotionProvider";
 import { site, basePath } from "@/lib/site";
 
 // Display face for headings; body face for all UI text (per CLAUDE.md).
@@ -109,12 +110,14 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ScrollProgress />
-        <TrustStrip />
-        <Navbar />
-        <main id="main-content" className="flex-1">{children}</main>
-        <Footer />
-        <FloatingCallButton />
+        <MotionProvider>
+          <ScrollProgress />
+          <TrustStrip />
+          <Navbar />
+          <main id="main-content" className="flex-1">{children}</main>
+          <Footer />
+          <FloatingCallButton />
+        </MotionProvider>
       </body>
     </html>
   );

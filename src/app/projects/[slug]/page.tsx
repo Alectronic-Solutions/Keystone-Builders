@@ -47,10 +47,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     { label: "The result", body: project.result },
   ];
 
-  const isRemodel =
-    project.category.toLowerCase().includes("remodel") ||
-    project.category.toLowerCase().includes("renovation");
-
   return (
     <>
       {/* Full-bleed hero. */}
@@ -64,33 +60,33 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           className="-z-10 object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary/90 via-primary/40 to-primary/10" />
-        <div className="mx-auto w-full max-w-content px-4 py-12">
+        <div className="mx-auto w-full max-w-content px-4 pb-12 pt-32">
           <Reveal>
             <Link
               href="/projects"
-              className="text-base font-semibold text-background/80 transition-colors hover:text-background"
+              className="inline-flex min-h-11 items-center text-base font-semibold text-background/80 transition-colors hover:text-background"
             >
               &larr; All projects
             </Link>
-            <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-accent">
-              {project.category}
-            </p>
-            <h1 className="mt-2 max-w-3xl font-display text-4xl font-bold leading-tight text-background md:text-5xl">
+            <h1 className="mt-4 max-w-3xl font-display text-[2.25rem] font-bold leading-tight text-background md:text-5xl">
               {project.title}
             </h1>
+            <p className="mt-3 text-base text-background/80">
+              {project.category} &middot; {project.location}
+            </p>
           </Reveal>
         </div>
       </section>
 
       {/* Stats bar. */}
       <section className="border-b border-primary/10 bg-white">
-        <div className="mx-auto grid max-w-content grid-cols-2 gap-y-8 px-4 py-10 md:grid-cols-4">
+        <div className="mx-auto grid max-w-content grid-cols-2 gap-x-4 gap-y-8 px-4 py-10 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label}>
               <p className="text-xs font-semibold uppercase tracking-wider text-ink-soft">
                 {stat.label}
               </p>
-              <p className="mt-1 font-display text-xl font-bold text-primary">{stat.value}</p>
+              <p className="mt-1 font-display text-lg font-bold text-primary sm:text-xl">{stat.value}</p>
             </div>
           ))}
         </div>
@@ -116,17 +112,24 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
 
-          {/* Before/after slider, remodel and renovation projects only. */}
-          {isRemodel && project.gallery.length >= 2 && (
-            <Reveal className="mt-16">
-              <h2 className="mb-6 font-display text-2xl font-bold text-primary">
-                Before &amp; after
+          {/* Before/after sliders, only for projects with matched before and after shots. */}
+          {project.comparisons && (
+            <div className="mt-16">
+              <h2 className="font-display text-2xl font-bold text-primary">
+                Before and after
               </h2>
-              <BeforeAfterSlider
-                before={project.gallery[0]}
-                after={project.gallery[1]}
-              />
-            </Reveal>
+              <p className="mt-2 text-base text-ink-soft">
+                Drag the handle to compare the original room with the finished work.
+              </p>
+              <div className="mt-8 grid gap-10 lg:grid-cols-2">
+                {project.comparisons.map((c) => (
+                  <Reveal key={c.label}>
+                    <h3 className="mb-3 font-sans text-base font-semibold text-primary">{c.label}</h3>
+                    <BeforeAfterSlider before={c.before} after={c.after} />
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           )}
 
           {/* Gallery with lightbox. */}

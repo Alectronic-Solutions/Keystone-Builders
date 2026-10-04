@@ -35,10 +35,38 @@ const social = [
   },
 ];
 
-const navLinks = [
-  ...site.nav,
-  { label: "Areas We Serve", href: "/areas" },
-  { label: "Privacy Policy", href: "/privacy" },
+const columns = [
+  {
+    title: "Services",
+    links: [
+      { label: "New Home Construction", href: "/services/new-home-construction" },
+      { label: "Remodeling and Renovations", href: "/services/remodeling" },
+      { label: "Additions", href: "/services/additions" },
+      { label: "Commercial Construction", href: "/services/commercial" },
+      { label: "All Services", href: "/services" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About Keystone", href: "/about" },
+      { label: "Our Process", href: "/process" },
+      { label: "Project Portfolio", href: "/projects" },
+      { label: "Before and After", href: "/before-after" },
+      { label: "Client Reviews", href: "/reviews" },
+      { label: "Careers", href: "/careers" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Areas We Serve", href: "/areas" },
+      { label: "Financing", href: "/financing" },
+      { label: "Warranty", href: "/warranty" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Privacy Policy", href: "/privacy" },
+    ],
+  },
 ];
 
 const credentials = [
@@ -48,18 +76,36 @@ const credentials = [
   `${site.warranty.charAt(0).toUpperCase() + site.warranty.slice(1)} workmanship warranty`,
 ];
 
+const headingClass = "text-xs font-semibold uppercase tracking-widest text-accent";
+const linkClass = "inline-flex min-h-9 items-center text-base text-background/70 transition-colors hover:text-background";
+
 export default function Footer() {
   return (
     <footer className="bg-primary text-background">
-      {/* Main footer grid. */}
-      <div className="mx-auto grid max-w-content gap-10 px-4 pt-14 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Brand column. */}
-        <div className="space-y-5">
+      {/* Main footer grid: brand and contact, then three link columns. */}
+      <div className="mx-auto grid max-w-content grid-cols-2 gap-x-6 gap-y-10 px-4 pb-10 pt-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        {/* Brand and contact column. */}
+        <div className="col-span-2 space-y-5 lg:col-span-1">
           <Logo dark />
           <p className="max-w-xs text-base leading-relaxed text-background/70">
             Serving {site.serviceArea} since {site.foundedYear}. Residential and
             commercial construction built to last.
           </p>
+          <ul className="space-y-1 text-base">
+            <li>
+              <a href={site.phoneHref} className="inline-flex min-h-9 items-center font-semibold text-background transition-colors hover:text-accent">
+                {site.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${site.email}`} className={linkClass}>
+                {site.email}
+              </a>
+            </li>
+            <li className="pt-1 text-sm text-background/60">
+              Office hours: Monday to Friday, 7am to 5pm
+            </li>
+          </ul>
           <div className="flex gap-2.5">
             {social.map((s) => (
               <a
@@ -68,7 +114,7 @@ export default function Footer() {
                 aria-label={`${site.name} on ${s.label}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-background/10 text-background/60 transition-colors hover:bg-accent hover:text-primary"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-background/10 text-background/60 transition-colors hover:bg-accent hover:text-primary"
               >
                 {s.icon}
               </a>
@@ -76,69 +122,33 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Navigation column. */}
-        <nav aria-label="Footer navigation">
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
-            Explore
-          </h3>
-          <ul className="mt-4 space-y-2.5">
-            {navLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-base text-background/70 transition-colors hover:text-background"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {/* Link columns. */}
+        {columns.map((col) => (
+          <nav key={col.title} aria-label={`Footer ${col.title.toLowerCase()}`}>
+            <h3 className={headingClass}>{col.title}</h3>
+            <ul className="mt-4 space-y-1">
+              {col.links.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={linkClass}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </div>
 
-        {/* Contact column. */}
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
-            Contact
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-base">
-            <li>
-              <a
-                href={site.phoneHref}
-                className="text-background/70 transition-colors hover:text-background"
-              >
-                {site.phoneDisplay}
-              </a>
+      {/* Credentials row, keeps the license number visible on every page. */}
+      <div className="border-t border-background/10">
+        <ul className="mx-auto flex max-w-content flex-wrap items-center gap-x-6 gap-y-2 px-4 py-5 text-sm text-background/70">
+          {credentials.map((c) => (
+            <li key={c} className="flex items-center gap-2">
+              <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+              {c}
             </li>
-            <li>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-background/70 transition-colors hover:text-background"
-              >
-                {site.email}
-              </a>
-            </li>
-            <li className="pt-1 text-background/70">
-              {site.serviceArea}
-              <br />
-              Allegheny County, PA
-            </li>
-          </ul>
-        </div>
-
-        {/* Credentials column. */}
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
-            Credentials
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-base text-background/70">
-            {credentials.map((c) => (
-              <li key={c} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
+          ))}
+        </ul>
       </div>
 
       {/* Bottom bar. */}
@@ -164,7 +174,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group flex items-center gap-1.5 text-background/70 transition-colors hover:text-background"
+            className="group flex min-h-11 items-center gap-1.5 text-background/70 transition-colors hover:text-background"
           >
             <span>Back to top</span>
             <svg

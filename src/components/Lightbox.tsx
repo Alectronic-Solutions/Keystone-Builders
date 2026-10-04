@@ -56,6 +56,9 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.22 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={image.alt}
             className="relative max-h-[88vh] w-full max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
@@ -120,7 +123,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
             type="button"
             aria-label="Close lightbox"
             onClick={onClose}
-            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-background/10 text-background transition-colors hover:bg-accent hover:text-primary"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-background/10 text-background transition-colors hover:bg-accent hover:text-primary"
           >
             <CloseIcon />
           </button>
