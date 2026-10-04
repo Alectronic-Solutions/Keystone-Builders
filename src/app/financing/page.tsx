@@ -74,7 +74,7 @@ export default function FinancingPage() {
               title="Pay as the work gets done"
               intro="Payments follow construction milestones written into your contract, so you never pay far ahead of finished, inspected work. Lenders like this structure because it matches how construction draws are released."
             />
-            <Reveal className="mt-8">
+            <Reveal className="mt-8 text-center md:text-left">
               <Button href="/contact" variant="primary">Start with a free estimate</Button>
             </Reveal>
           </div>

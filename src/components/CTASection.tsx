@@ -24,7 +24,7 @@ export default function CTASection({
 
       <div className="mx-auto max-w-content px-4 py-16 md:py-20">
         <Reveal>
-          <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:items-center">
+          <div className="flex flex-col items-center justify-between gap-10 text-center md:flex-row md:text-left">
             <div className="max-w-xl">
               <h2 className="font-display text-3xl font-bold leading-tight text-background md:text-4xl">
                 {title}
@@ -32,7 +32,7 @@ export default function CTASection({
               <p className="mt-4 text-base text-background/75 md:text-lg">{intro}</p>
 
               {/* Social proof strip. */}
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-background/60">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-background/60 md:justify-start">
                 <span className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
                   Free written estimates
@@ -48,7 +48,7 @@ export default function CTASection({
               </div>
             </div>
 
-            <div className="flex flex-col items-start gap-4 sm:items-center">
+            <div className="flex flex-col items-center gap-4">
               <Button href="/contact" variant="accent">
                 Get a Free Estimate
               </Button>

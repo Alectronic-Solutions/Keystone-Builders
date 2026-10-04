@@ -175,7 +175,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       {/* Other services. */}
       <section className="border-t border-primary/10 bg-background">
         <div className="mx-auto max-w-content px-4 py-12">
-          <h2 className="font-display text-2xl font-bold text-primary">Other services</h2>
+          <h2 className="text-center font-display text-2xl font-bold text-primary md:text-left">Other services</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">
             {others.map((s) => (
               <li key={s.slug}>
@@ -189,7 +189,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               </li>
             ))}
           </ul>
-          <div className="mt-8">
+          <div className="mt-8 text-center md:text-left">
             <Button href="/services" variant="outline">All services</Button>
           </div>
         </div>

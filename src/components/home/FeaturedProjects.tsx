@@ -21,7 +21,7 @@ export default function FeaturedProjects() {
           </Reveal>
         ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 text-center md:text-left">
         <Button href="/projects" variant="outline">
           See all projects
         </Button>

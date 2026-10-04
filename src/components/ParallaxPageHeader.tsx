@@ -52,12 +52,12 @@ export default function ParallaxPageHeader({
 
       {/* Top padding clears the fixed navbar when the copy is taller than min-h. */}
       <div className="mx-auto w-full max-w-content px-4 pb-12 pt-32 md:pb-16 md:pt-36">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center md:mx-0 md:text-left">
           <h1 className="font-display text-[2.25rem] font-bold leading-tight text-background md:text-5xl lg:text-6xl">
             {title}
           </h1>
           {intro && (
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-background/80 md:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-background/80 md:mx-0 md:text-lg">
               {intro}
             </p>
           )}

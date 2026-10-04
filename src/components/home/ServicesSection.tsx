@@ -20,7 +20,7 @@ export default function ServicesSection() {
           </Reveal>
         ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 text-center md:text-left">
         <Button href="/services" variant="outline">
           Explore all services
         </Button>

@@ -24,6 +24,7 @@ function ProcessStep({
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.18 }}
+      className="text-center sm:text-left"
     >
       {/* Number: starts dim, glows to accent gold when in view. */}
       <motion.p
@@ -88,7 +89,7 @@ export default function ProcessSection() {
         </div>
         <Link
           href="/process"
-          className="mt-12 inline-flex min-h-11 items-center gap-2 text-base font-semibold text-accent transition-colors hover:text-background"
+          className="mx-auto mt-12 flex w-fit min-h-11 items-center gap-2 md:mx-0 text-base font-semibold text-accent transition-colors hover:text-background"
         >
           See the full process
           <span aria-hidden="true">&rarr;</span>

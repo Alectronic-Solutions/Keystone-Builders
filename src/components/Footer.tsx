@@ -82,12 +82,13 @@ const linkClass = "inline-flex min-h-9 items-center text-base text-background/70
 export default function Footer() {
   return (
     <footer className="bg-primary text-background">
-      {/* Main footer grid: brand and contact, then three link columns. */}
-      <div className="mx-auto grid max-w-content grid-cols-2 gap-x-6 gap-y-10 px-4 pb-10 pt-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      {/* Main footer grid: brand and contact, then three link columns. Centered on
+          phones, left aligned from md up. */}
+      <div className="mx-auto grid max-w-content grid-cols-2 gap-x-6 gap-y-10 px-4 pb-10 pt-14 text-center md:grid-cols-3 md:text-left lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         {/* Brand and contact column. */}
-        <div className="col-span-2 space-y-5 lg:col-span-1">
+        <div className="col-span-2 space-y-5 md:col-span-3 lg:col-span-1">
           <Logo dark />
-          <p className="max-w-xs text-base leading-relaxed text-background/70">
+          <p className="mx-auto max-w-xs text-base leading-relaxed text-background/70 md:mx-0">
             Serving {site.serviceArea} since {site.foundedYear}. Residential and
             commercial construction built to last.
           </p>
@@ -106,7 +107,7 @@ export default function Footer() {
               Office hours: Monday to Friday, 7am to 5pm
             </li>
           </ul>
-          <div className="flex gap-2.5">
+          <div className="flex justify-center gap-2.5 md:justify-start">
             {social.map((s) => (
               <a
                 key={s.label}
@@ -123,8 +124,13 @@ export default function Footer() {
         </div>
 
         {/* Link columns. */}
-        {columns.map((col) => (
-          <nav key={col.title} aria-label={`Footer ${col.title.toLowerCase()}`}>
+        {/* The third column spans both phone columns so it sits centered on its own row. */}
+        {columns.map((col, i) => (
+          <nav
+            key={col.title}
+            aria-label={`Footer ${col.title.toLowerCase()}`}
+            className={i === columns.length - 1 ? "col-span-2 md:col-span-1" : ""}
+          >
             <h3 className={headingClass}>{col.title}</h3>
             <ul className="mt-4 space-y-1">
               {col.links.map((item) => (
@@ -141,7 +147,7 @@ export default function Footer() {
 
       {/* Credentials row, keeps the license number visible on every page. */}
       <div className="border-t border-background/10">
-        <ul className="mx-auto flex max-w-content flex-wrap items-center gap-x-6 gap-y-2 px-4 py-5 text-sm text-background/70">
+        <ul className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-5 text-sm text-background/70 md:justify-start">
           {credentials.map((c) => (
             <li key={c} className="flex items-center gap-2">
               <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
@@ -153,7 +159,7 @@ export default function Footer() {
 
       {/* Bottom bar. */}
       <div className="border-t border-background/10">
-        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 pb-20 pt-4 text-sm text-background/70 sm:flex-row sm:pb-4">
+        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-4 pb-20 pt-4 text-center text-sm text-background/70 sm:flex-row sm:pb-4 sm:text-left">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>

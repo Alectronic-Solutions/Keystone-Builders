@@ -18,14 +18,14 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/70 via-primary/55 to-primary/85 md:bg-gradient-to-r md:from-primary/95 md:via-primary/75 md:to-primary/40" />
 
       <div className="mx-auto w-full max-w-content px-4 pb-16 pt-32 sm:pb-24 sm:pt-36">
-        <div className="max-w-2xl">
+        <div className="mx-auto max-w-2xl text-center md:mx-0 md:text-left">
           <Reveal>
             <h1 className="font-display text-[2.5rem] font-bold leading-[1.05] text-background text-balance [text-shadow:0_2px_24px_rgba(0,0,0,0.35)] sm:text-5xl md:text-6xl">
               Built right, the first time
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-background/90 sm:mt-6 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-background/90 sm:mt-6 sm:text-lg md:mx-0">
               {site.serviceArea} homeowners and businesses trust Keystone
               Builders for custom homes, remodels, additions, and commercial
               construction. One accountable team, from first sketch to final
@@ -33,7 +33,7 @@ export default function Hero() {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
               <Button href="/contact" variant="accent">
                 Get a Free Estimate
               </Button>
@@ -46,7 +46,7 @@ export default function Hero() {
             <p className="mt-8 text-xs text-background/70 sm:text-sm">
               Serving {site.serviceArea} since {site.foundedYear}
               <span className="mx-2 text-accent">&middot;</span>
-              {site.license}
+              <span className="whitespace-nowrap">{site.license}</span>
             </p>
           </Reveal>
         </div>

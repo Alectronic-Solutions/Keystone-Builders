@@ -1,4 +1,5 @@
 // SectionHeading: title plus optional intro. No overline pill labels (AI tell).
+// Always centered on phones; align="left" switches to left aligned from md up.
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 
@@ -13,7 +14,8 @@ export default function SectionHeading({
   align?: "left" | "center";
   invert?: boolean;
 }) {
-  const alignment = align === "center" ? "text-center mx-auto" : "";
+  const alignment =
+    align === "center" ? "text-center mx-auto" : "text-center mx-auto md:text-left md:mx-0";
   return (
     <Reveal className={`max-w-2xl ${alignment}`}>
       <h2
@@ -33,8 +35,8 @@ export default function SectionHeading({
         </p>
       )}
       <span
-        className={`mt-6 block h-1 w-16 rounded-full bg-accent ${
-          align === "center" ? "mx-auto" : ""
+        className={`mx-auto mt-6 block h-1 w-16 rounded-full bg-accent ${
+          align === "center" ? "" : "md:mx-0"
         }`}
       />
     </Reveal>

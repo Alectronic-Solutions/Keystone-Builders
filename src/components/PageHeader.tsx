@@ -13,7 +13,7 @@ export default function PageHeader({
     <section className="bg-primary text-background">
       {/* Top padding clears the fixed navbar (about 108px tall at page top). */}
       <div className="mx-auto max-w-content px-4 pb-14 pt-32 md:pb-16 md:pt-36">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center md:mx-0 md:text-left">
           <h1 className="font-display text-[2.25rem] font-bold leading-tight text-background md:text-5xl">
             {title}
           </h1>
