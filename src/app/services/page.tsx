@@ -53,8 +53,7 @@ export default function ServicesPage() {
                   <h2 className="font-display text-3xl font-bold text-primary md:text-4xl">
                     {service.title}
                   </h2>
-                  <span className="mt-5 block h-1 w-16 rounded-full bg-accent" />
-                  <p className="mt-5 text-base leading-relaxed text-ink-soft md:text-lg">
+                  <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
                     {service.description}
                   </p>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">

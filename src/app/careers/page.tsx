@@ -61,8 +61,7 @@ export default function CareersPage() {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b, i) => (
             <Reveal as="li" key={b.title} delay={i * 0.06} className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-primary/10">
-              <span aria-hidden="true" className="block h-1 w-10 rounded-full bg-accent" />
-              <h3 className="mt-4 font-display text-lg font-bold text-primary">{b.title}</h3>
+              <h3 className="font-display text-lg font-bold text-primary">{b.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-ink-soft">{b.body}</p>
             </Reveal>
           ))}

@@ -54,7 +54,6 @@ export default function PrivacyPage() {
                 <h2 className="font-display text-xl font-bold text-primary">
                   {section.title}
                 </h2>
-                <span className="mt-3 block h-0.5 w-10 rounded-full bg-accent" />
                 <p className="mt-4 text-base leading-relaxed text-ink-soft">
                   {section.body}
                 </p>

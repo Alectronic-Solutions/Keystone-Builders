@@ -112,10 +112,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {service.included.map((item, i) => (
             <Reveal as="li" key={item.title} delay={(i % 3) * 0.08} className="rounded-xl bg-background p-6 ring-1 ring-primary/10">
-              <span className="font-display text-2xl font-bold text-accent-ink">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-3 font-display text-lg font-bold text-primary">{item.title}</h3>
+              <h3 className="font-display text-lg font-bold text-primary">{item.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-ink-soft">{item.body}</p>
             </Reveal>
           ))}

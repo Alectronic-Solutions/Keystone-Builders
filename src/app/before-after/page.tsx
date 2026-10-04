@@ -35,8 +35,7 @@ export default function BeforeAfterPage() {
               <h2 className="font-display text-3xl font-bold leading-tight text-primary">
                 {project.title}
               </h2>
-              <span className="mt-5 block h-1 w-16 rounded-full bg-accent" />
-              <p className="mt-5 text-base leading-relaxed text-ink-soft md:text-lg">{project.challenge}</p>
+              <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">{project.challenge}</p>
               <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <dt className="font-semibold uppercase tracking-wider text-ink-soft">Timeline</dt>

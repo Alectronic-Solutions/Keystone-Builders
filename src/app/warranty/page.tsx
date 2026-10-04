@@ -51,7 +51,6 @@ export default function WarrantyPage() {
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-primary/10 md:p-8">
             <h2 className="font-display text-2xl font-bold text-primary">What is covered</h2>
-            <span className="mt-3 block h-1 w-12 rounded-full bg-accent" />
             <ul className="mt-6 space-y-3">
               {covered.map((c) => (
                 <li key={c} className="flex gap-3 text-base text-ink">
@@ -63,7 +62,6 @@ export default function WarrantyPage() {
           </Reveal>
           <Reveal delay={0.1} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-primary/10 md:p-8">
             <h2 className="font-display text-2xl font-bold text-primary">What is not covered</h2>
-            <span className="mt-3 block h-1 w-12 rounded-full bg-primary/20" />
             <ul className="mt-6 space-y-3">
               {notCovered.map((c) => (
                 <li key={c} className="flex gap-3 text-base text-ink-soft">

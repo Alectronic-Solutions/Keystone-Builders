@@ -1,7 +1,6 @@
 "use client";
 
 // StatStrip: headline proof points with animated counters. Years stays current via foundedYear.
-import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { site } from "@/lib/site";
@@ -26,16 +25,7 @@ export default function StatStrip() {
                 value={stat.value}
                 className="block font-display text-4xl font-bold text-primary md:text-5xl"
               />
-              <span className="relative mt-3 block h-0.5 w-8 overflow-hidden rounded-full bg-accent/20" aria-hidden="true">
-                <motion.span
-                  className="absolute inset-y-0 left-0 block w-full origin-left rounded-full bg-accent"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.08 + 0.3 }}
-                />
-              </span>
-              <p className="mt-3 text-sm font-medium text-ink-soft sm:text-base">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium text-ink-soft sm:text-base">{stat.label}</p>
             </div>
           </Reveal>
         ))}

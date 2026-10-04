@@ -79,7 +79,6 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="font-display text-2xl font-bold text-primary">Talk to a builder</h2>
-                  <span className="mt-3 block h-1 w-12 rounded-full bg-accent" />
                   <p className="mt-4 text-base leading-relaxed text-ink-soft">
                     Prefer to talk it through? Give us a call and we will point you in the right direction.
                   </p>

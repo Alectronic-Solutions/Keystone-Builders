@@ -57,7 +57,6 @@ export default function FaqPage() {
               <section key={group.title} id={anchor(group.title)} className="scroll-mt-28">
                 <Reveal>
                   <h2 className="font-display text-2xl font-bold text-primary md:text-3xl">{group.title}</h2>
-                  <span className="mt-3 block h-1 w-12 rounded-full bg-accent" />
                 </Reveal>
                 <div className="mt-6">
                   <FaqList faqs={group.faqs} />

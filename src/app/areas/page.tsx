@@ -151,7 +151,6 @@ export default function AreasPage() {
                 <h2 className="font-display text-lg font-bold text-primary">
                   {county.name}
                 </h2>
-                <span className="mt-2 block h-0.5 w-8 rounded-full bg-accent" />
                 <ul className="mt-4 space-y-2">
                   {county.communities.map((c) => (
                     <li key={c} className="flex items-center gap-2 text-base text-ink-soft">

@@ -106,7 +106,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             {narrative.map((block, i) => (
               <Reveal key={block.label} delay={i * 0.08}>
                 <h2 className="font-display text-xl font-bold text-primary">{block.label}</h2>
-                <span className="mt-3 block h-1 w-12 rounded-full bg-accent" />
                 <p className="mt-4 text-base leading-relaxed text-ink-soft">{block.body}</p>
               </Reveal>
             ))}

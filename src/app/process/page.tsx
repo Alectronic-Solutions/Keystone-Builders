@@ -38,7 +38,7 @@ export default function ProcessPage() {
               <article className="grid gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-primary/10 md:grid-cols-[180px_1fr] md:p-10">
                 <div>
                   <p className="font-display text-5xl font-bold leading-none text-accent">{step.number}</p>
-                  <p className="mt-3 inline-flex rounded-md bg-background px-2.5 py-1 text-sm font-semibold text-primary">
+                  <p className="mt-3 text-sm font-semibold text-ink-soft">
                     {step.duration}
                   </p>
                 </div>
