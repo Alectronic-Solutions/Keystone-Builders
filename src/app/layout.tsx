@@ -8,6 +8,7 @@ import FloatingCallButton from "@/components/FloatingCallButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import MotionProvider from "@/components/MotionProvider";
 import { site, basePath } from "@/lib/site";
+import DemoNotice from "./DemoNotice";
 
 // Display face for headings; body face for all UI text (per CLAUDE.md).
 const playfair = Playfair_Display({
@@ -34,6 +35,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${site.url}/`,
   },
+  // Fictional business: keep it out of search (see DemoNotice).
+  robots: { index: false, follow: false },
   openGraph: {
     type: "website",
     title: `${site.name} | General Contractor in ${site.city}`,
@@ -63,29 +66,6 @@ export const viewport: Viewport = {
   themeColor: "#1C2B3A",
 };
 
-// LocalBusiness markup so search engines understand the contractor profile.
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: site.legalName,
-  description: site.description,
-  url: site.url,
-  telephone: site.phoneDisplay,
-  email: site.email,
-  priceRange: "$$$",
-  foundingDate: String(site.foundedYear),
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: site.city,
-    addressRegion: site.region,
-    addressCountry: "US",
-  },
-  areaServed: {
-    "@type": "City",
-    name: site.city,
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -95,12 +75,6 @@ export default function RootLayout({
         <link rel="icon" href={`${basePath}/favicon.svg`} type="image/svg+xml" />
         <link rel="shortcut icon" href={`${basePath}/favicon.svg`} />
         <link rel="apple-touch-icon" href={`${basePath}/favicon.svg`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
       </head>
       <body className="flex min-h-screen flex-col">
         {/* Skip link: hidden until focused via keyboard, then slides in. */}
@@ -116,6 +90,7 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
+          <DemoNotice />
           <FloatingCallButton />
         </MotionProvider>
       </body>
